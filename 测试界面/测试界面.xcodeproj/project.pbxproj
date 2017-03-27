@@ -19,6 +19,7 @@
 		6798D1851E8915A200085119 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6798D1831E8915A200085119 /* Main.storyboard */; };
 		6798D1871E8915A200085119 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6798D1861E8915A200085119 /* Assets.xcassets */; };
 		6798D18A1E8915A200085119 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6798D1881E8915A200085119 /* LaunchScreen.storyboard */; };
+		6798D1911E89168C00085119 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798D1901E89168C00085119 /* CollectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,8 @@
 		6798D1861E8915A200085119 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6798D1891E8915A200085119 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6798D18B1E8915A200085119 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6798D18F1E89168C00085119 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		6798D1901E89168C00085119 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 			children = (
 				6798D17D1E8915A200085119 /* AppDelegate.h */,
 				6798D17E1E8915A200085119 /* AppDelegate.m */,
+				6798D18F1E89168C00085119 /* CollectionViewController.h */,
+				6798D1901E89168C00085119 /* CollectionViewController.m */,
 				6798D1801E8915A200085119 /* ViewController.h */,
 				6798D1811E8915A200085119 /* ViewController.m */,
 				6798D1831E8915A200085119 /* Main.storyboard */,
@@ -243,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6798D1911E89168C00085119 /* CollectionViewController.m in Sources */,
 				6798D1821E8915A200085119 /* ViewController.m in Sources */,
 				6798D17F1E8915A200085119 /* AppDelegate.m in Sources */,
 				6798D17C1E8915A200085119 /* main.m in Sources */,

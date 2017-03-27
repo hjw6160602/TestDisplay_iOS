@@ -7,22 +7,31 @@
 //
 
 #import "ViewController.h"
+#import "CollectionViewController.h"
 
 @interface ViewController ()
-
+@property (nonatomic, strong) CollectionViewController *collectionViewController;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [self.navigationController pushViewController:self.collectionViewController animated:YES];
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (CollectionViewController *)collectionViewController {
+    if (!_collectionViewController) {
+        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+        //item之间的距离
+        flowLayout.minimumInteritemSpacing = 10;
+        flowLayout.minimumLineSpacing = 10;
+        
+        self.collectionViewController = [[CollectionViewController alloc]initWithCollectionViewLayout:flowLayout];
+    }
+    return _collectionViewController;
 }
 
 
