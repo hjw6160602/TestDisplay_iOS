@@ -17,19 +17,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.navigationController pushViewController:self.collectionViewController animated:YES];
+    [self.view addSubview:self.collectionViewController.collectionView];
 }
 
 
 - (CollectionViewController *)collectionViewController {
     if (!_collectionViewController) {
+        
+        CGFloat MARGIN = 10;
+        CGFloat AspectRatio = 124.0 /147.0;
+        CGFloat width = CGRectGetWidth(self.view.frame);
+//        NSUInteger rows = ceilf(self.dataVM.guessYouLikeProductArr.count / 2);
+//        CGFloat height = width * AspectRatio;
+//        CGRect frame = CGRectMake(0, 0, width, height);
+//        flowLayout.minimumLineSpacing = MARGIN;
+//        flowLayout.minimumInteritemSpacing = MARGIN;
+        CGFloat itemW = (width - 3 * MARGIN) / 2;
+        CGFloat itemH = itemW * AspectRatio;
+        
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+        flowLayout.itemSize = CGSizeMake(itemW, itemH);
         //item之间的距离
         flowLayout.minimumInteritemSpacing = 10;
         flowLayout.minimumLineSpacing = 10;
-        
+
         self.collectionViewController = [[CollectionViewController alloc]initWithCollectionViewLayout:flowLayout];
+        
+        self.collectionViewController.collectionView.contentInset = UIEdgeInsetsMake(MARGIN, MARGIN, MARGIN, MARGIN);
     }
     return _collectionViewController;
 }
