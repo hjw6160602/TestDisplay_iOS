@@ -6,8 +6,15 @@
 //  Copyright © 2017年 贺嘉炜. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import UIKit;
 
 @interface TourDepartureDateAndTouristsPresentor : NSObject
+
+@property (nonatomic, strong) NSArray *viewModels;
+
+/**
+ * @func   presentorWithTableView 类工厂方法初始化
+ */
++ (instancetype)presentorWithTableView:(UITableView *)tableView;
 
 @end
