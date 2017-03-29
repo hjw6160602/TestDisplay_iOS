@@ -20,6 +20,12 @@ static NSString *ReuseID = @"reuseIdentifier";
 
 @implementation DetailTableViewController
 
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RouteCjyDetailImageNameCell" bundle:nil] forCellReuseIdentifier:@"RouteCjyDetailImageNameCell"];
+    
+}
+     
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;

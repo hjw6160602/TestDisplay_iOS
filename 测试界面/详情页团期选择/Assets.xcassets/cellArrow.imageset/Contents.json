@@ -6,11 +6,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "Snip20170329_6.png",
+      "filename" : "cellArrow@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "cellArrow@3x.png",
       "scale" : "3x"
     }
   ],

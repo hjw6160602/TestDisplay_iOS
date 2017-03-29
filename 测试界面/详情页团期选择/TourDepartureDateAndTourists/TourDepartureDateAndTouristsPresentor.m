@@ -7,7 +7,7 @@
 //
 
 #import "TourDepartureDateAndTouristsPresentor.h"
-#import "RouteCjyDetailBaseViewModel.h"
+#import "RouteCjyDetailImageTitleViewModel.h"
 #import "BaseRouteCjyDetailCell.h"
 
 @interface TourDepartureDateAndTouristsPresentor()
@@ -17,6 +17,8 @@
 @property (nonatomic, strong) BaseRouteCjyDetailCell *titleCell;
 
 @end
+
+static CGFloat const FOOT_HEIGHT = 10;
 
 @implementation TourDepartureDateAndTouristsPresentor
 
@@ -30,13 +32,11 @@
 - (NSArray *)viewModels {
     
     NSMutableArray *sectionTourDepartureDateAndTourists = [NSMutableArray array];
-    RouteCjyDetailBaseViewModel *title = [[RouteCjyDetailBaseViewModel alloc] initWithCell:self.titleCell cellHeight:44];
+
+    RouteCjyDetailImageTitleViewModel *model = [[RouteCjyDetailImageTitleViewModel alloc] initWithImage:nil title:@"选择出游人数和日期" detailText:@"更改" arrow:YES];
+    [sectionTourDepartureDateAndTourists addObject:model];
     
-    [sectionTourDepartureDateAndTourists addObject:title];
-    
-//        [sectionsGuessYouLike addObject:[[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"guessYouLike" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] title:@"猜你喜欢" detailText:@"" arrow:NO]];
-//        
-//        [sectionsGuessYouLike addObject:[[RouteCjyDetailBaseViewModel alloc] initWithCell:self.contentCell cellHeight:CGRectGetHeight(self.guessYouLikeView.frame)]];
+    [sectionTourDepartureDateAndTourists addObject:[[RouteCjyDetailBaseViewModel alloc] initClearSectionCellHeight:FOOT_HEIGHT]];
     
     return [sectionTourDepartureDateAndTourists copy];
 }
