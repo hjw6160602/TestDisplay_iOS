@@ -8,6 +8,7 @@
 
 #import "TourDepartureDateAndTouristsPresentor.h"
 #import "RouteCjyDetailImageTitleViewModel.h"
+#import "TourDepartureDateCollectionController.h"
 #import "BaseRouteCjyDetailCell.h"
 #import "GroupedCellBgView.h"
 
@@ -21,6 +22,7 @@
 
 @property (nonatomic, strong) UITableViewCell *touristsCell;
 
+@property (nonatomic, strong) TourDepartureDateCollectionController *tourVC;
 @end
 
 //static CGFloat const FOOT_HEIGHT = 10;
@@ -45,6 +47,7 @@
     RouteCjyDetailBaseViewModel *tourDepartureDateVM = [[RouteCjyDetailBaseViewModel alloc]initWithCell:self.tourDepartureDateCell cellHeight:55];
     [sectionTourDepartureDateAndTourists addObject:tourDepartureDateVM];
     
+    
     RouteCjyDetailBaseViewModel *touristsVM = [[RouteCjyDetailBaseViewModel alloc]initWithCell:self.touristsCell cellHeight:65];
     [sectionTourDepartureDateAndTourists addObject:touristsVM];
     
@@ -65,6 +68,8 @@
     if (!_tourDepartureDateCell) {
         static NSString *reuseID = @"tourDepartureDateCellReuseIdentifier";
         self.tourDepartureDateCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID];
+        self.tourVC.collectionView.frame = self.tourDepartureDateCell.frame;
+        [self.tourDepartureDateCell.contentView addSubview:self.tourVC.collectionView];
         self.tourDepartureDateCell.backgroundView = [[GroupedCellBgView alloc] initWithFrame:CGRectZero withDataSourceCount:1 withIndex:0 isPlain:true needArrow:false isSelected:false];
     }
     return _tourDepartureDateCell;
@@ -77,6 +82,30 @@
         self.touristsCell.backgroundView = [[GroupedCellBgView alloc] initWithFrame:CGRectZero withDataSourceCount:1 withIndex:0 isPlain:true needArrow:false isSelected:false];
     }
     return _touristsCell;
+}
+
+- (TourDepartureDateCollectionController *)tourVC {
+    if (!_tourVC) {
+        self.tourVC = [[TourDepartureDateCollectionController alloc]init];
+        
+        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+        flowLayout.itemSize = CGSizeMake(74, 34);
+        flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        
+        //item之间的距离
+        flowLayout.minimumInteritemSpacing = 10;
+        
+        NSMutableArray *products = [NSMutableArray array];
+        for (NSInteger index = 0; index < 25; index ++) {
+            NSObject *product = [[NSObject alloc] init];
+            [products addObject:product];
+        }
+        
+        self.tourVC = [[TourDepartureDateCollectionController alloc] initWithCollectionViewLayout:flowLayout Products:products];
+        
+        self.tourVC.collectionView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    }
+    return _tourVC;
 }
 
 @end
