@@ -12,22 +12,13 @@
 #import "RouteCjyDetailBaseViewModel.h"
 
 @interface DetailTableViewController ()
-@property (nonatomic, strong) TourDepartureDateAndTouristsPresentor *presentor;
+@property (nonatomic, strong) TourDepartureDateAndTouristsPresentor *tourDeparturePresentor;
+
 @end
 
 static NSString *ReuseID = @"reuseIdentifier";
 
 @implementation DetailTableViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
-    self.presentor = [TourDepartureDateAndTouristsPresentor presentorWithTableView:self.tableView];
-}
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -35,21 +26,30 @@ static NSString *ReuseID = @"reuseIdentifier";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    RouteCjyDetailBaseViewModel *viewModel = [self.presentor.viewModels objectAtIndex:indexPath.row];
+    RouteCjyDetailBaseViewModel *viewModel = [self.tourDeparturePresentor.viewModels objectAtIndex:indexPath.row];
     UITableViewCell *cell = [viewModel tableView:tableView cellForRowAtIndexPath:indexPath delegate:self];
     if (!cell) {
         NSLog(@"这里要崩溃了！");
     }
-    cell.backgroundColor = [UIColor grayColor];
+    
     return cell;
 }
 
 #pragma mark - Table view delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    RouteCjyDetailBaseViewModel *viewModel = [self.presentor.viewModels objectAtIndex:indexPath.row];
+    RouteCjyDetailBaseViewModel *viewModel = [self.tourDeparturePresentor.viewModels objectAtIndex:indexPath.row];
     
     return viewModel.cellHeight;
+}
+
+#pragma mark - Lazy load
+
+- (TourDepartureDateAndTouristsPresentor* )tourDeparturePresentor {
+    if (!_tourDeparturePresentor) {
+        self.tourDeparturePresentor = [[TourDepartureDateAndTouristsPresentor alloc]init];
+    }
+    return _tourDeparturePresentor;
 }
 
 @end
