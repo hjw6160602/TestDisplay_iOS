@@ -35,6 +35,8 @@
 		67891F8F1E8BA93300A26E43 /* TourDepartureDateCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F8E1E8BA93300A26E43 /* TourDepartureDateCollectionController.m */; };
 		67891F921E8BA97600A26E43 /* TourDepartureDateCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F911E8BA97600A26E43 /* TourDepartureDateCollectionCell.m */; };
 		67891F951E8BB1F400A26E43 /* UIFont+LVUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F941E8BB1F400A26E43 /* UIFont+LVUtil.m */; };
+		67891F991E8BD84C00A26E43 /* RouteCjyNumControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F981E8BD84C00A26E43 /* RouteCjyNumControlView.m */; };
+		67891F9C1E8BE1E200A26E43 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F9B1E8BE1E200A26E43 /* TableViewCell.m */; };
 		6798D15F1E89155800085119 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798D15E1E89155800085119 /* main.m */; };
 		6798D1621E89155800085119 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798D1611E89155800085119 /* AppDelegate.m */; };
 		6798D1651E89155800085119 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798D1641E89155800085119 /* ViewController.m */; };
@@ -109,6 +111,10 @@
 		67891F911E8BA97600A26E43 /* TourDepartureDateCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourDepartureDateCollectionCell.m; sourceTree = "<group>"; };
 		67891F931E8BB1F400A26E43 /* UIFont+LVUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+LVUtil.h"; sourceTree = "<group>"; };
 		67891F941E8BB1F400A26E43 /* UIFont+LVUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+LVUtil.m"; sourceTree = "<group>"; };
+		67891F971E8BD84C00A26E43 /* RouteCjyNumControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteCjyNumControlView.h; sourceTree = "<group>"; };
+		67891F981E8BD84C00A26E43 /* RouteCjyNumControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteCjyNumControlView.m; sourceTree = "<group>"; };
+		67891F9A1E8BE1E200A26E43 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		67891F9B1E8BE1E200A26E43 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		6798D15A1E89155800085119 /* 测试界面.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "测试界面.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6798D15E1E89155800085119 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6798D1601E89155800085119 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -306,6 +312,10 @@
 		67891F961E8BD7E700A26E43 /* RouteCjyNumControlView */ = {
 			isa = PBXGroup;
 			children = (
+				67891F971E8BD84C00A26E43 /* RouteCjyNumControlView.h */,
+				67891F981E8BD84C00A26E43 /* RouteCjyNumControlView.m */,
+				67891F9A1E8BE1E200A26E43 /* TableViewCell.h */,
+				67891F9B1E8BE1E200A26E43 /* TableViewCell.m */,
 			);
 			path = RouteCjyNumControlView;
 			sourceTree = "<group>";
@@ -523,6 +533,7 @@
 				67891F5D1E8B942D00A26E43 /* MASConstraint.m in Sources */,
 				67891F601E8B942D00A26E43 /* MASViewAttribute.m in Sources */,
 				67891F651E8B942D00A26E43 /* ViewController+MASAdditions.m in Sources */,
+				67891F991E8BD84C00A26E43 /* RouteCjyNumControlView.m in Sources */,
 				67891F821E8B993B00A26E43 /* RouteCjyDetailBaseViewModel.m in Sources */,
 				67891F871E8B999F00A26E43 /* GroupedCellBgView.m in Sources */,
 				67891F831E8B993B00A26E43 /* RouteCjyDetailImageTitleViewModel.m in Sources */,
@@ -537,6 +548,7 @@
 				67891F5C1E8B942D00A26E43 /* MASCompositeConstraint.m in Sources */,
 				67891F801E8B993B00A26E43 /* BaseRouteCjyDetailCell.m in Sources */,
 				67891F7F1E8B993B00A26E43 /* UIColor+LVUtil.m in Sources */,
+				67891F9C1E8BE1E200A26E43 /* TableViewCell.m in Sources */,
 				67891F811E8B993B00A26E43 /* RouteCjyDetailImageNameCell.m in Sources */,
 				67891F631E8B942D00A26E43 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				67891F8F1E8BA93300A26E43 /* TourDepartureDateCollectionController.m in Sources */,
