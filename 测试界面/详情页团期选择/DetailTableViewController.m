@@ -22,13 +22,14 @@ static NSString *ReuseID = @"reuseIdentifier";
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"RouteCjyDetailImageNameCell" bundle:nil] forCellReuseIdentifier:@"RouteCjyDetailImageNameCell"];
     
 }
      
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.tourDeparturePresentor.viewModels.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
