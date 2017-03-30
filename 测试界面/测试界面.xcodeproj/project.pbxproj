@@ -8,25 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3A19C2D61ED32D50A09426FD /* libPods-测试界面.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EC62040FE3C75BCC169B97 /* libPods-测试界面.a */; };
-		67891F191E8B890300A26E43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F181E8B890300A26E43 /* main.m */; };
-		67891F1C1E8B890300A26E43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F1B1E8B890300A26E43 /* AppDelegate.m */; };
-		67891F221E8B890300A26E43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67891F201E8B890300A26E43 /* Main.storyboard */; };
-		67891F241E8B890300A26E43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67891F231E8B890300A26E43 /* Assets.xcassets */; };
-		67891F271E8B890300A26E43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67891F251E8B890300A26E43 /* LaunchScreen.storyboard */; };
-		67891F2F1E8B8B7F00A26E43 /* TourDepartureDateAndTouristsPresentor.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F2E1E8B8B7F00A26E43 /* TourDepartureDateAndTouristsPresentor.m */; };
-		67891F351E8B8BDB00A26E43 /* DetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F341E8B8BDB00A26E43 /* DetailTableViewController.m */; };
-		67891F7F1E8B993B00A26E43 /* UIColor+LVUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F731E8B993B00A26E43 /* UIColor+LVUtil.m */; };
-		67891F801E8B993B00A26E43 /* BaseRouteCjyDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F771E8B993B00A26E43 /* BaseRouteCjyDetailCell.m */; };
-		67891F811E8B993B00A26E43 /* RouteCjyDetailImageNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F791E8B993B00A26E43 /* RouteCjyDetailImageNameCell.m */; };
-		67891F821E8B993B00A26E43 /* RouteCjyDetailBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F7C1E8B993B00A26E43 /* RouteCjyDetailBaseViewModel.m */; };
-		67891F831E8B993B00A26E43 /* RouteCjyDetailImageTitleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F7E1E8B993B00A26E43 /* RouteCjyDetailImageTitleViewModel.m */; };
-		67891F871E8B999F00A26E43 /* GroupedCellBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F861E8B999F00A26E43 /* GroupedCellBgView.m */; };
-		67891F8A1E8B9A5D00A26E43 /* UIScreen+LVUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F891E8B9A5D00A26E43 /* UIScreen+LVUtil.m */; };
-		67891F8C1E8B9DB500A26E43 /* RouteCjyDetailImageNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67891F8B1E8B9DB500A26E43 /* RouteCjyDetailImageNameCell.xib */; };
-		67891F8F1E8BA93300A26E43 /* TourDepartureDateCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F8E1E8BA93300A26E43 /* TourDepartureDateCollectionController.m */; };
-		67891F921E8BA97600A26E43 /* TourDepartureDateCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F911E8BA97600A26E43 /* TourDepartureDateCollectionCell.m */; };
-		67891F951E8BB1F400A26E43 /* UIFont+LVUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F941E8BB1F400A26E43 /* UIFont+LVUtil.m */; };
-		67891F991E8BD84C00A26E43 /* RouteCjyNumControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67891F981E8BD84C00A26E43 /* RouteCjyNumControlView.m */; };
 		6798D15F1E89155800085119 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798D15E1E89155800085119 /* main.m */; };
 		6798D1621E89155800085119 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798D1611E89155800085119 /* AppDelegate.m */; };
 		6798D1651E89155800085119 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798D1641E89155800085119 /* ViewController.m */; };
@@ -40,14 +21,10 @@
 		6798D1871E8915A200085119 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6798D1861E8915A200085119 /* Assets.xcassets */; };
 		6798D18A1E8915A200085119 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6798D1881E8915A200085119 /* LaunchScreen.storyboard */; };
 		6798D1911E89168C00085119 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798D1901E89168C00085119 /* CollectionViewController.m */; };
-		67B986CB1E8CAC1100FDA19C /* TourDepartureDateTouristsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B986C91E8CAC1100FDA19C /* TourDepartureDateTouristsCell.m */; };
-		67B986CC1E8CAC1100FDA19C /* TourDepartureDateTouristsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67B986CA1E8CAC1100FDA19C /* TourDepartureDateTouristsCell.xib */; };
-		67B986CE1E8CB41E00FDA19C /* libMasonry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B986CD1E8CB41E00FDA19C /* libMasonry.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		260AC6B4DA2B19FBA38AF14D /* Pods-测试界面.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-测试界面.debug.xcconfig"; path = "Pods/Target Support Files/Pods-测试界面/Pods-测试界面.debug.xcconfig"; sourceTree = "<group>"; };
-		67891F151E8B890300A26E43 /* 详情页团期选择.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "详情页团期选择.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67891F181E8B890300A26E43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		67891F1A1E8B890300A26E43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		67891F1B1E8B890300A26E43 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -108,19 +85,12 @@
 		67B986C91E8CAC1100FDA19C /* TourDepartureDateTouristsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourDepartureDateTouristsCell.m; sourceTree = "<group>"; };
 		67B986CA1E8CAC1100FDA19C /* TourDepartureDateTouristsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TourDepartureDateTouristsCell.xib; sourceTree = "<group>"; };
 		67B986CD1E8CB41E00FDA19C /* libMasonry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMasonry.a; path = "Pods/../build/Debug-iphoneos/Masonry/libMasonry.a"; sourceTree = "<group>"; };
+		67B986CF1E8CB68100FDA19C /* libPods-测试界面.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-测试界面.a"; path = "Pods/../build/Debug-iphoneos/libPods-测试界面.a"; sourceTree = "<group>"; };
 		97EC62040FE3C75BCC169B97 /* libPods-测试界面.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-测试界面.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D80B22FC2CB4B7F4F5613E45 /* Pods-测试界面.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-测试界面.release.xcconfig"; path = "Pods/Target Support Files/Pods-测试界面/Pods-测试界面.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		67891F121E8B890300A26E43 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				67B986CE1E8CB41E00FDA19C /* libMasonry.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6798D1571E89155800085119 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,7 +242,6 @@
 			children = (
 				6798D15A1E89155800085119 /* 测试界面.app */,
 				6798D1781E8915A200085119 /* UICollectionView.app */,
-				67891F151E8B890300A26E43 /* 详情页团期选择.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -330,6 +299,7 @@
 		79718F5512A0E19874B80476 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				67B986CF1E8CB68100FDA19C /* libPods-测试界面.a */,
 				67B986CD1E8CB41E00FDA19C /* libMasonry.a */,
 				97EC62040FE3C75BCC169B97 /* libPods-测试界面.a */,
 			);
@@ -348,23 +318,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		67891F141E8B890300A26E43 /* 详情页团期选择 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 67891F2B1E8B890300A26E43 /* Build configuration list for PBXNativeTarget "详情页团期选择" */;
-			buildPhases = (
-				67891F111E8B890300A26E43 /* Sources */,
-				67891F121E8B890300A26E43 /* Frameworks */,
-				67891F131E8B890300A26E43 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "详情页团期选择";
-			productName = "详情页团期选择";
-			productReference = 67891F151E8B890300A26E43 /* 详情页团期选择.app */;
-			productType = "com.apple.product-type.application";
-		};
 		6798D1591E89155800085119 /* 测试界面 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6798D1711E89155800085119 /* Build configuration list for PBXNativeTarget "测试界面" */;
@@ -411,11 +364,6 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "贺嘉炜";
 				TargetAttributes = {
-					67891F141E8B890300A26E43 = {
-						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 7R3MSEN8NJ;
-						ProvisioningStyle = Automatic;
-					};
 					6798D1591E89155800085119 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 7R3MSEN8NJ;
@@ -443,24 +391,11 @@
 			targets = (
 				6798D1591E89155800085119 /* 测试界面 */,
 				6798D1771E8915A200085119 /* UICollectionView */,
-				67891F141E8B890300A26E43 /* 详情页团期选择 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		67891F131E8B890300A26E43 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				67B986CC1E8CAC1100FDA19C /* TourDepartureDateTouristsCell.xib in Resources */,
-				67891F8C1E8B9DB500A26E43 /* RouteCjyDetailImageNameCell.xib in Resources */,
-				67891F271E8B890300A26E43 /* LaunchScreen.storyboard in Resources */,
-				67891F241E8B890300A26E43 /* Assets.xcassets in Resources */,
-				67891F221E8B890300A26E43 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6798D1581E89155800085119 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -532,29 +467,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		67891F111E8B890300A26E43 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				67891F921E8BA97600A26E43 /* TourDepartureDateCollectionCell.m in Sources */,
-				67B986CB1E8CAC1100FDA19C /* TourDepartureDateTouristsCell.m in Sources */,
-				67891F991E8BD84C00A26E43 /* RouteCjyNumControlView.m in Sources */,
-				67891F821E8B993B00A26E43 /* RouteCjyDetailBaseViewModel.m in Sources */,
-				67891F871E8B999F00A26E43 /* GroupedCellBgView.m in Sources */,
-				67891F831E8B993B00A26E43 /* RouteCjyDetailImageTitleViewModel.m in Sources */,
-				67891F351E8B8BDB00A26E43 /* DetailTableViewController.m in Sources */,
-				67891F951E8BB1F400A26E43 /* UIFont+LVUtil.m in Sources */,
-				67891F2F1E8B8B7F00A26E43 /* TourDepartureDateAndTouristsPresentor.m in Sources */,
-				67891F8A1E8B9A5D00A26E43 /* UIScreen+LVUtil.m in Sources */,
-				67891F801E8B993B00A26E43 /* BaseRouteCjyDetailCell.m in Sources */,
-				67891F7F1E8B993B00A26E43 /* UIColor+LVUtil.m in Sources */,
-				67891F811E8B993B00A26E43 /* RouteCjyDetailImageNameCell.m in Sources */,
-				67891F8F1E8BA93300A26E43 /* TourDepartureDateCollectionController.m in Sources */,
-				67891F1C1E8B890300A26E43 /* AppDelegate.m in Sources */,
-				67891F191E8B890300A26E43 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6798D1561E89155800085119 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -630,44 +542,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		67891F291E8B890300A26E43 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				DEVELOPMENT_TEAM = 7R3MSEN8NJ;
-				INFOPLIST_FILE = "详情页团期选择/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Masonry",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.SaiDicaprio.lvmama.-------";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "";
-			};
-			name = Debug;
-		};
-		67891F2A1E8B890300A26E43 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				DEVELOPMENT_TEAM = 7R3MSEN8NJ;
-				INFOPLIST_FILE = "详情页团期选择/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/Masonry",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.SaiDicaprio.lvmama.-------";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "";
-			};
-			name = Release;
-		};
 		6798D16F1E89155800085119 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -811,15 +685,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		67891F2B1E8B890300A26E43 /* Build configuration list for PBXNativeTarget "详情页团期选择" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				67891F291E8B890300A26E43 /* Debug */,
-				67891F2A1E8B890300A26E43 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		6798D1551E89155800085119 /* Build configuration list for PBXProject "测试界面" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
