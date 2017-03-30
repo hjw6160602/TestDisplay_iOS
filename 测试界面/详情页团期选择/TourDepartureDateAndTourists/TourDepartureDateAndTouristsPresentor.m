@@ -9,9 +9,11 @@
 #import "TourDepartureDateAndTouristsPresentor.h"
 #import "RouteCjyDetailImageTitleViewModel.h"
 #import "TourDepartureDateCollectionController.h"
+#import "TourDepartureDateTouristsCell.h"
 #import "BaseRouteCjyDetailCell.h"
-#import "RouteCjyNumControlView.h"
 #import "GroupedCellBgView.h"
+
+
 
 @interface TourDepartureDateAndTouristsPresentor()
 
@@ -21,7 +23,7 @@
 
 @property (nonatomic, strong) UITableViewCell *tourDepartureDateCell;
 
-@property (nonatomic, strong) UITableViewCell *touristsCell;
+@property (nonatomic, strong) TourDepartureDateTouristsCell *touristsCell;
 
 @property (nonatomic, strong) TourDepartureDateCollectionController *tourVC;
 @end
@@ -77,13 +79,10 @@
     return _tourDepartureDateCell;
 }
 
-- (UITableViewCell *)touristsCell {
+- (TourDepartureDateTouristsCell *)touristsCell {
     if (!_touristsCell) {
         static NSString *reuseID = @"touristsCellReuseIdentifier";
-        self.touristsCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID];
-        self.touristsCell.backgroundView = [[GroupedCellBgView alloc] initWithFrame:CGRectZero withDataSourceCount:1 withIndex:0 isPlain:true needArrow:false isSelected:false];
-        RouteCjyNumControlView *numControl = [[RouteCjyNumControlView alloc] initWithFrame:CGRectMake(10, 10, 0, 0)];
-        [self.touristsCell.contentView addSubview:numControl];
+        self.touristsCell = [[TourDepartureDateTouristsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID];
     }
     return _touristsCell;
 }

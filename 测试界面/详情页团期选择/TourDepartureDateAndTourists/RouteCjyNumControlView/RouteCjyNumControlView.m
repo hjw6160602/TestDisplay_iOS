@@ -24,8 +24,8 @@
     CGFloat y = CGRectGetMinY(frame);
     self = [super initWithFrame:CGRectMake(x, y, 90, 25)];
     if (self) {
-        [self setupUI];
         _num = 1;
+        [self setupUI];
     }
     return self;
 }

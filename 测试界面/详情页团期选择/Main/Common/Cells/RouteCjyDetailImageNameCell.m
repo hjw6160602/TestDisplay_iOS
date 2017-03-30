@@ -10,7 +10,7 @@
 #import "RouteCjyDetailImageTitleViewModel.h"
 #import "UIColor+LVUtil.h"
 #import "GroupedCellBgView.h"
-#import "Masonry.h"
+#import <Masonry/Masonry.h>
 
 
 @interface RouteCjyDetailImageNameCell ()

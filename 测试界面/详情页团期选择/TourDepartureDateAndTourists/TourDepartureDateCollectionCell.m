@@ -9,7 +9,11 @@
 #import "TourDepartureDateCollectionCell.h"
 #import "UIColor+LVUtil.h"
 #import "UIFont+LVUtil.h"
-#import "Masonry.h"
+#import <Masonry/Masonry.h>
+
+
+/** 颜色 */
+#define LvmmColor(R, G, B)  [UIColor colorWithRed:(R)/255.0 green:(G)/255.0 blue:(B)/255.0 alpha:1.0]
 
 @interface TourDepartureDateCollectionCell()
 
@@ -22,8 +26,10 @@
 static CGFloat const MARGIN = 2;
 static CGFloat const CornerRadius = 5.0f;
 static CGFloat const BorderWidth = 0.5f;
-@implementation TourDepartureDateCollectionCell
 
+
+
+@implementation TourDepartureDateCollectionCell
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -38,7 +44,7 @@ static CGFloat const BorderWidth = 0.5f;
     [self addSubview:self.priceLabel];
     
     UIView *selectedBGView = [[UIView alloc] initWithFrame:self.bounds];
-    selectedBGView.backgroundColor = [UIColor colorWithRed:255 green:10 blue:10 alpha:1];
+    selectedBGView.backgroundColor = LvmmColor(255, 240, 248);
     selectedBGView.layer.cornerRadius = CornerRadius;
     selectedBGView.layer.borderWidth = BorderWidth;
     selectedBGView.layer.borderColor = [UIColor lvColorWithHexadecimal:kColorMainRed].CGColor;

@@ -7,7 +7,7 @@
 //
 
 #import "BaseRouteCjyDetailCell.h"
-#import "Masonry.h"
+#import <Masonry/Masonry.h>
 
 @interface BaseRouteCjyDetailCell ()
 
