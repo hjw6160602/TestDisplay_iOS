@@ -1,5 +1,5 @@
 //
-//  RouteCjyDetailController.h
+//  RouteCjyDetailPackageTourController.h
 //  Lvmm
 //
 //  Created by liwancheng on 16/1/12.
@@ -12,7 +12,7 @@
 #import <LvmmMediator/RouteDetailDelegate.h>
 
 
-@interface RouteCjyDetailController : BaseViewController
+@interface RouteCjyDetailPackageTourController : BaseViewController
 
 @property (weak, nonatomic) id<RouteDetailDelegate> delegate;;
 

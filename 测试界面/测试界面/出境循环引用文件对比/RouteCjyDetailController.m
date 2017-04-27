@@ -1,55 +1,23 @@
 //
-//  RouteCjyDetailController.m
+//  RouteCjyDetailPackageTourController.m
 //  Lvmm
 //
 //  Created by SaiDiCaprio on 17/3/14.
 //  Copyright © 2016年 Lvmama. All rights reserved.
 //
-#import <Masonry/Masonry.h>
 
-#import <LvmmBaseClass/DBHelper.h>
-#import <LvmmBaseClass/ServicePhoneCallManager.h>
-
-#import <LvmmCategory/UIView+LVHudLoad.h>
-#import <LvmmCategory/UITableView+LVUtil.h>
-#import <LvmmCategory/UIWebView+LoadRequest.h>
-
-#import <LvmmCommonView/DashLineView.h>
-#import <LvmmCommonView/StarPointView.h>
-#import <LvmmCommonView/LVDialogMessage.h>
-#import <LvmmCommonView/PlainCellBgView.h>
-#import <LvmmCommonView/LVSegmentControl.h>
-#import <LvmmCommonView/GroupedCellBgView.h>
-#import <LvmmCommonView/ScrollImageViewer.h>
-#import <LvmmCommonView/PlainSectionHeaderView.h>
-
-#import <LvmmConfig/LvmmConstant.h>
-#import <LvmmConfig/LvmmConfigDefine.h>
-
-#import <LvmmModel/CmtScore.h>
-#import <LvmmModel/ImageBase.h>
-#import <LvmmModel/TimePrice.h>
-#import <LvmmModel/CmtComment.h>
-#import <LvmmModel/CmtActivity.h>
-#import <LvmmModel/TrainFlight.h>
-#import <LvmmModel/ProdLineRoute.h>
-#import <LvmmModel/ProdLineRouteVo.h>
-#import <LvmmModel/RoutePositionVo.h>
-#import <LvmmModel/ProdProductPropBase.h>
-#import <LvmmModel/ClientSimpleDistrictVo.h>
-
-#import <LvmmStatistics/WapperUM.h>
-#import <LvmmStatistics/LvKSharedData.h>
-#import <LvmmStatistics/ReferLoscUtil.h>
-#import <LvmmStatistics/LvmmTagSupport.h>
-#import <LvmmStatistics/RhinoStatistics.h>
-
-#import <LvmmMediator/LVMediatorAll.h>
-#import <LvmmMediator/LVAdapterManager.h>
-
-#import <LVMMNetwork/LVMMRequestWeiba.h>
-#import <LvmmLocation/LvmmLocationManager.h>
-#import <LvmmRouteCommon/RouteShipActivityView.h>
+@import Masonry;
+@import SDWebImage;
+@import LvmmModel;
+@import LvmmCommonView;
+@import LvmmCategory;
+@import LvmmStatistics;
+@import LvmmConfig;
+@import LvmmBaseClass;
+@import LvmmMediator;
+@import LvmmNetwork;
+@import LvmmLocation;
+@import LvmmRouteCommon;
 
 #import "CjyDetailActivityView.h"
 #import "RouteCjyLineDetailView.h"
@@ -62,7 +30,7 @@
 #import "CjyStampProductCell.h"
 #import "CjyDetailTrafficCell.h"
 #import "CjyReferenceTrafficCell.h"
-#import "CjyProdFeatherShowMoreCell.h"
+#import "RouteCjyDetailExpandCell.h"
 #import "CjyRecommentPageScrollView.h"
 #import "CjyProdLineRouteVoChooseCell.h"
 #import "RouteCjyDetailDateChooseCell.h"
@@ -80,13 +48,15 @@
 #import "RouteCjyDetailCommentDataViewModel.h"
 #import "RouteCjyDetailHappyLvXingViewModel.h"
 #import "RouteCjyDetailTrafficPlaceViewModel.h"
-#import "RouteCjyDetailProductFeatherShowMoreVM.h"
+#import "RouteCjyDetailCouponViewModel.h"
 
+#import "UIView+Extension.h"
 #import "LvmmCjyCommonFunction.h"
 #import "LVUserDefaultManager+CJY.h"
-
-#import "RouteCjyDetailController.h"
+#import "RouteCjyDetailPackageTourController.h"
 #import "RouteCjySelectDepartureViewController.h"
+
+#import "GuessYouLikePresentor.h"
 
 #define BOTTOM_TAG 100
 #define HEAD_HEIGHT 8
@@ -120,6 +90,8 @@ NSString *const kRouteCjyDetailStampProductSelectId = @"kRouteCjyDetailStampProd
 
 UIKIT_EXTERN NSString *const kRouteCjyDetailDepartureSelectId; //点击更多出发地
 NSString *const kRouteCjyDetailDepartureSelectId = @"kRouteGnyDetailDepartureSelectId";
+UIKIT_EXTERN NSString *const kRouteCjyDetailCouponSelectId; //点击领红包
+NSString *const kRouteCjyDetailCouponSelectId = @"kRouteCjyDetailCouponSelectId";
 
 typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     kRouteCjyTapViewTypeRoute = 0,  //行程介绍
@@ -134,7 +106,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
  [_delegate hideCjyNavigationView];
  }
  */
-@interface RouteCjyDetailController () <UITableViewDataSource, UITableViewDelegate,UIWebViewDelegate, BaseTapViewDelegate, CjyGeneralDetailGroupCellDelegate, RouteCjyDetailDateChooseViewModelDelegate, LVMMNetworkManagerDelegate, CjyRecommentPageScrollViewDelegate, CjyProdLineRouteVoChooseCellDelegate>{
+@interface RouteCjyDetailPackageTourController () <UITableViewDataSource, UITableViewDelegate,UIWebViewDelegate, BaseTapViewDelegate, CjyGeneralDetailGroupCellDelegate, RouteCjyDetailDateChooseViewModelDelegate, LVMMNetworkManagerDelegate, CjyRecommentPageScrollViewDelegate, CjyProdLineRouteVoChooseCellDelegate>{
     
     float screenWidth;
     float bottomHeight;
@@ -183,16 +155,19 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
 @property (nonatomic, strong) LVSegmentControl *tapView;
 
 /** 792 新增，是否点击了 产品特色 的 查看更多 */
-@property (nonatomic, strong) RouteCjyDetailProductFeatherShowMoreVM *prodFeatherShowMoreVM;
 @property (nonatomic, strong) RouteCjyDetailBaseViewModel *webViewDetailCellModel;
 @property (nonatomic, strong) JourneyDepartureDateVM *journeyDaysVM;
+
+@property (nonatomic, strong) GuessYouLikePresentor *guessLikePresentor;
+
+@property (nonatomic, strong) RouteCjyDetailExpandCell *showMoreProductDetailCell;
 
 @property (strong, nonatomic) IBOutlet EGOMJTableView *cjyTableview;
 - (IBAction)refreshDetail:(id)sender;
 
 @end
 
-@implementation RouteCjyDetailController
+@implementation RouteCjyDetailPackageTourController
 
 #pragma mark - LifeCircle 生命周期
 - (void)viewDidLoad {
@@ -271,19 +246,19 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     // 导航栏背景图片
     UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen lvScreenWidth], 64)];
     imageview.transform = CGAffineTransformMakeRotation(M_PI);
-    imageview.image = [UIImage imageNamed:@"placeDetailBg.png" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
+    imageview.image = [UIImage imageNamed:@"placeDetailBg.png" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil];
     [self.view addSubview:imageview];
     // 回到顶部和图文详情悬浮按钮
     backTopButton = [UIButton buttonWithType:UIButtonTypeCustom];
     backTopButton.frame = CGRectMake([UIScreen lvScreenWidth] - 60, [UIScreen lvScreenHeight] - 115, 45, 45);
-    [backTopButton setImage:[UIImage imageNamed:@"routeBackTop.png" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+    [backTopButton setImage:[UIImage imageNamed:@"routeBackTop.png" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     [backTopButton addTarget:self action:@selector(topAction) forControlEvents:UIControlEventTouchUpInside];
     backTopButton.hidden = YES;
     [self.view addSubview:backTopButton];
     
     picTextButton = [UIButton buttonWithType:UIButtonTypeCustom];
     picTextButton.frame = CGRectMake([UIScreen lvScreenWidth] - 60, [UIScreen lvScreenHeight] - 172, 45, 45);
-    [picTextButton setImage:[UIImage imageNamed:@"routePicTextDetail" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+    [picTextButton setImage:[UIImage imageNamed:@"routePicTextDetail" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     [picTextButton addTarget:self action:@selector(picTextAction) forControlEvents:UIControlEventTouchUpInside];
     picTextButton.hidden = YES;
     if (self.routeProduct.subCategoryId != WINE_SPLIT_CATEGORY_ID) {
@@ -361,16 +336,6 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
         [_tapView addSubview:btmSeperatorLine];
     }
     return _tapView;
-}
-
-/** 792 新增，是否点击了 产品特色 的 查看更多 */
-- (RouteCjyDetailProductFeatherShowMoreVM *)prodFeatherShowMoreVM{
-    if (!_prodFeatherShowMoreVM) {
-        static NSString *reuseID = @"journeyMoreCellIdentifier";
-        CjyProdFeatherShowMoreCell *moreCell = [[CjyProdFeatherShowMoreCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID];
-        _prodFeatherShowMoreVM = [[RouteCjyDetailProductFeatherShowMoreVM alloc] initWithCell:moreCell cellHeight:44];
-    }
-    return _prodFeatherShowMoreVM;
 }
 
 /** 产品特色详情的WebView */
@@ -482,6 +447,12 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     if ([RouteCjyDetailActivityViewModel showCellWithData:self.routeProduct]) {
         [sectionPreferential addObject:[[RouteCjyDetailActivityViewModel alloc] initWithData:self.routeProduct]];
     }
+    if ([RouteCjyDetailCouponViewModel showCellWithData:self.routeProduct]) {
+        [sectionPreferential addObject:[[RouteCjyDetailBaseViewModel alloc] initClearSectionCellHeight:HEAD_HEIGHT]];
+        RouteCjyDetailCouponViewModel *model = [[RouteCjyDetailCouponViewModel alloc] initWithData:self.routeProduct];
+        model.selectId = kRouteCjyDetailCouponSelectId;
+        [sectionPreferential addObject:model];
+    }
     [sectionPreferential addObject:[[RouteCjyDetailBaseViewModel alloc] initClearSectionCellHeight:FOOT_HEIGHT]];
     [array addObject:sectionPreferential];
     
@@ -516,7 +487,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     // 选择日期
     if ([RouteCjyDetailDateChooseViewModel showCellWithData:prodGroupDateVoList]) {
         // 出发日期CELL
-        RouteCjyDetailImageTitleViewModel *model = [[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"routeSchedule" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] title:@"出发日期" detailText:@"" arrow:NO];
+        RouteCjyDetailImageTitleViewModel *model = [[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"routeSchedule" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] title:@"出发日期" detailText:@"" arrow:NO];
         [sectionsDate addObject:model];
         // 日期价格
         [sectionsDate addObject:[[RouteCjyDetailDateChooseViewModel alloc] initWithData:prodGroupDateVoList]];
@@ -534,7 +505,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     NSMutableArray *sectionTips = [NSMutableArray array];
     if (announcementCell) {
         announcementCell.backgroundView = [[GroupedCellBgView alloc] initWithFrame:CGRectZero withDataSourceCount:2 withIndex:1 isPlain:true needArrow:false isSelected:false];
-        [sectionTips addObject:[[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"announcement" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] title:@"公告" detailText:@"" arrow:NO]];
+        [sectionTips addObject:[[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"announcement" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] title:@"公告" detailText:@"" arrow:NO]];
         RouteCjyDetailBaseViewModel *model = [[RouteCjyDetailBaseViewModel alloc] initWithCell:announcementCell cellHeight:floorf(CGRectGetHeight(announcementCell.bounds))];
         model.selectId = kRouteCjyDetailAnnouncementSelectId;
         [sectionTips addObject:model];
@@ -586,7 +557,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     //sections7: 签注/签证
     NSMutableArray *sections7 = [NSMutableArray array];
     if (currentProdLineRouteVo.visa) {
-        RouteCjyDetailNoticeViewModel *model = [[RouteCjyDetailNoticeViewModel alloc] initTitle:@"签注/签证" iconImage:[UIImage imageNamed:@"routeDetailIcon6" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil]];
+        RouteCjyDetailNoticeViewModel *model = [[RouteCjyDetailNoticeViewModel alloc] initTitle:@"签注/签证" iconImage:[UIImage imageNamed:@"routeDetailIcon6" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil]];
         model.didSelectUrl = currentProdLineRouteVo.visaUrl;
         [sections7 addObject:model];
     }
@@ -594,7 +565,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     // 退改说明 PROP_CHANGE_AND_CANCELLATION_INSTRUCTIONS
     ProdProductPropBase *instructionsProductPropBase = [self getProdProductPropByCode:PROP_CHANGE_AND_CANCELLATION_INSTRUCTIONS];
     if (instructionsProductPropBase.value.length > 0) {
-        RouteCjyDetailNoticeViewModel *model = [[RouteCjyDetailNoticeViewModel alloc] initTitle:instructionsProductPropBase.name iconImage:[UIImage imageNamed:@"routeChangeCancel" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil]];
+        RouteCjyDetailNoticeViewModel *model = [[RouteCjyDetailNoticeViewModel alloc] initTitle:instructionsProductPropBase.name iconImage:[UIImage imageNamed:@"routeChangeCancel" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil]];
         model.didSelectDescriptionInfo = instructionsProductPropBase.value;
         [sections7 addObject:model];
     }
@@ -602,7 +573,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     // 出行警示 PROP_WARNING
     ProdProductPropBase *warningProductPropBase = [self getProdProductPropByCode:PROP_WARNING];
     if (warningProductPropBase.value.length > 0) {
-        RouteCjyDetailNoticeViewModel *model = [[RouteCjyDetailNoticeViewModel alloc] initTitle:warningProductPropBase.name iconImage:[UIImage imageNamed:@"routeTips" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil]];
+        RouteCjyDetailNoticeViewModel *model = [[RouteCjyDetailNoticeViewModel alloc] initTitle:warningProductPropBase.name iconImage:[UIImage imageNamed:@"routeTips" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil]];
         model.didSelectDescriptionInfo = warningProductPropBase.value;
         [sections7 addObject:model];
     }
@@ -611,29 +582,44 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     
     
     // 猜你喜欢
-    NSMutableArray *sections8 = [NSMutableArray array];
-    if (routeProductArray.count > 0) {
-        [sections8 addObject:[[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"guessYouLike" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] title:@"猜你喜欢" detailText:@"" arrow:NO]];
-        static NSString *favoriteIdentifier = @"favoriteCellIdentifier";
-        UITableViewCell *cell = [self.cjyTableview dequeueReusableCellWithIdentifier:favoriteIdentifier];
-        if (!cell) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:favoriteIdentifier];
+    //    NSMutableArray *sections8 = [NSMutableArray array];
+    //    if (routeProductArray.count > 0) {
+    //        [sections8 addObject:[[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"guessYouLike" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] title:@"猜你喜欢" detailText:@"" arrow:NO]];
+    //        static NSString *favoriteIdentifier = @"favoriteCellIdentifier";
+    //        UITableViewCell *cell = [self.cjyTableview dequeueReusableCellWithIdentifier:favoriteIdentifier];
+    //        if (!cell) {
+    //            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:favoriteIdentifier];
+    //        }
+    //        if (recommentPageScrollView) {
+    //            cell.frame = CGRectMake(0, 0, CGRectGetWidth(self.cjyTableview.frame), CGRectGetHeight(recommentPageScrollView.bounds));
+    //            recommentPageScrollView.frame = CGRectMake(0, 0, CGRectGetWidth(self.cjyTableview.frame), CGRectGetHeight(recommentPageScrollView.bounds));
+    //            [cell.contentView addSubview:recommentPageScrollView];
+    //        }
+    //        // 画下面分割线
+    //        cell.backgroundView = [[GroupedCellBgView alloc] initWithFrame:cell.bounds withDataSourceCount:2 withIndex:1 isPlain:true needArrow:false isSelected:false];
+    //        [sections8 addObject:[[RouteCjyDetailBaseViewModel alloc] initWithCell:cell cellHeight:floorf(CGRectGetHeight(recommentPageScrollView.bounds))]];
+    //    }
+    //    [array addObject:sections8];
+    
+    // 猜你喜欢
+    {
+        if (routeProductArray.count > 0) {
+            self.guessLikePresentor.productArr = routeProductArray;
+            [array addObject:self.guessLikePresentor.viewModels];
         }
-        if (recommentPageScrollView) {
-            cell.frame = CGRectMake(0, 0, CGRectGetWidth(self.cjyTableview.frame), CGRectGetHeight(recommentPageScrollView.bounds));
-            recommentPageScrollView.frame = CGRectMake(0, 0, CGRectGetWidth(self.cjyTableview.frame), CGRectGetHeight(recommentPageScrollView.bounds));
-            [cell.contentView addSubview:recommentPageScrollView];
-        }
-        // 画下面分割线
-        cell.backgroundView = [[GroupedCellBgView alloc] initWithFrame:cell.bounds withDataSourceCount:2 withIndex:1 isPlain:true needArrow:false isSelected:false];
-        [sections8 addObject:[[RouteCjyDetailBaseViewModel alloc] initWithCell:cell cellHeight:floorf(CGRectGetHeight(recommentPageScrollView.bounds))]];
     }
-    [array addObject:sections8];
+    
     //底部
     [array addObject:@[[[RouteCjyDetailBaseViewModel alloc] initClearSectionCellHeight:FOOT_HEIGHT]]];
     self.cellArray = array;
 }
 
+- (GuessYouLikePresentor *)guessLikePresentor {
+    if (!_guessLikePresentor) {
+        self.guessLikePresentor = [GuessYouLikePresentor presentorWithTableView:self.cjyTableview];
+    }
+    return _guessLikePresentor;
+}
 
 // section 7 行程、产品特色、点评、须知必须放在一个section里面（后面判断行程时方法:updatePicTextButton会用到）
 - (NSArray *)getDetailTabbarCellArraySection:(NSInteger)section {
@@ -679,7 +665,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     
     [cells addObject:[[RouteCjyDetailBaseViewModel alloc] initClearSectionCellHeight:FOOT_HEIGHT]];
     
-    [cells addObject:[[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"productFeatures" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] title:@"产品特色" detailText:@"" arrow:NO]];
+    [cells addObject:[[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"productFeatures" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] title:@"产品特色" detailText:@"" arrow:NO]];
     // 产品经理推荐
     if (recommendReasonCell) {
         CGFloat addHeight = 30;
@@ -699,13 +685,32 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
         RouteCjyDetailBaseViewModel *model = [[RouteCjyDetailBaseViewModel alloc] initWithCell:cell cellHeight:floorf(CGRectGetHeight(cell.bounds))];
         model.selectId = kRouteCjyDetailPMRecommendSelectId;
         [cells addObject:model];
+        
+        //7.9.4跟团游开心驴行图片
+        if ([RouteCjyDetailHappyLvXingViewModel showCellWithData:self.routeProduct]) {
+            
+            UITableViewCell *happyLvxingCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HappyLvxingImageResueCellIdentifier"];
+            happyLvxingCell.frame = CGRectMake(0, 0, [UIScreen lvScreenWidth], [UIScreen lvScreenWidth]*406/750+20);
+            UIImageView *imageView = [[UIImageView alloc] init];
+            imageView.frame = CGRectMake(0, 10, [UIScreen lvScreenWidth], [UIScreen lvScreenWidth]*406/750);
+            imageView.contentMode = UIViewContentModeScaleToFill;
+            if (self.routeProduct.lvXingPictureUrl) {
+                [imageView sd_setImageWithURL:[NSURL URLWithString:self.routeProduct.lvXingPictureUrl] placeholderImage:nil];
+            }
+            happyLvxingCell.clipsToBounds = YES;
+            [happyLvxingCell addSubview:imageView];
+            
+            RouteCjyDetailBaseViewModel *happyLvxingModel = [[RouteCjyDetailBaseViewModel alloc] initWithCell:happyLvxingCell cellHeight:floorf(CGRectGetHeight(happyLvxingCell.bounds))];
+            [cells addObject:happyLvxingModel];
+        }
     }
-    RouteCjyDetailProductFeatherShowMoreVM *model = self.prodFeatherShowMoreVM;
-    CjyProdFeatherShowMoreCell *cell = (CjyProdFeatherShowMoreCell *)model.tabelViewcell;
-    if (cell.hasShown) {
+    
+    RouteCjyDetailBaseViewModel *showMoreVM = [[RouteCjyDetailBaseViewModel alloc] initWithCell:self.showMoreProductDetailCell cellHeight:44];
+    
+    if (self.showMoreProductDetailCell.hasShown) {
         [cells addObject:self.webViewDetailCellModel];
     }
-    [cells addObject:model];
+    [cells addObject:showMoreVM];
     
     return cells;
 }
@@ -719,7 +724,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
         NSUInteger count = trainFlightType.toTrafficArray.count + trainFlightType.backTrafficArray.count;
         
         // row.0 参考交通
-        RouteCjyDetailImageTitleViewModel *model = [[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"planeTraffic" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] title:@"参考交通" detailText:@"" arrow:NO];
+        RouteCjyDetailImageTitleViewModel *model = [[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"planeTraffic" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] title:@"参考交通" detailText:@"" arrow:NO];
         model.titleDetail = @"起降时间均为当地时间";
         [cells addObject:model];
         
@@ -749,7 +754,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     }
     //
     //行程概况
-    [cells addObject:[[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"lineProfile" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] title:@"行程概况" detailText:@"" arrow:NO]];
+    [cells addObject:[[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"lineProfile" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] title:@"行程概况" detailText:@"" arrow:NO]];
     // 行程信息
     if (self.routeProduct.subCategoryId == WINE_SPLIT_CATEGORY_ID) {
         if (!routeDetailTrafficCell) {
@@ -827,7 +832,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     BOOL showBackBus = prodTraffic.showBackBus && prodTraffic.backBusStops.count > 0;
     if (showFrontBus || showBackBus) {
         [cells addObject:[[RouteCjyDetailBaseViewModel alloc] initClearSectionCellHeight:HEAD_HEIGHT]];
-        RouteCjyDetailImageTitleViewModel *model = [[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"getOnSite" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] title:@"上车点" detailText:@"" arrow:NO];
+        RouteCjyDetailImageTitleViewModel *model = [[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"getOnSite" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] title:@"上车点" detailText:@"" arrow:NO];
         [cells addObject:model];
         if (showFrontBus) {
             [cells addObject:[[RouteCjyDetailBaseViewModel alloc] initWithCell:[self showFrontBackBusCell:@"去程集合点"] cellHeight:25]];
@@ -848,7 +853,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
 
 - (NSArray *)getCostDescCellArray {
     NSMutableArray *cells = [NSMutableArray array];
-    [cells addObject:[[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"costInformation" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] title:@"费用说明" detailText:@"" arrow:NO]];
+    [cells addObject:[[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"costInformation" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] title:@"费用说明" detailText:@"" arrow:NO]];
     // 费用包含 不包含
     if (routeNoticeCell) {
         UIView *backgroundView = [PlainCellBgView cellBgWithSelected:NO needFirstCellTopLine:NO];
@@ -860,7 +865,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     // 推荐项目走H5 PROP_RECOMMENDED_ITEMS
     ProdProductPropBase *recommendProductPropBase = [self getProdProductPropByCode:PROP_RECOMMENDED_ITEMS];
     if (recommendProductPropBase.value.length > 0) {
-        RouteCjyDetailNoticeViewModel *model = [[RouteCjyDetailNoticeViewModel alloc] initTitle:recommendProductPropBase.name iconImage:[UIImage imageNamed:@"routeDetailIcon14" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil]];
+        RouteCjyDetailNoticeViewModel *model = [[RouteCjyDetailNoticeViewModel alloc] initTitle:recommendProductPropBase.name iconImage:[UIImage imageNamed:@"routeDetailIcon14" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil]];
         model.didSelectUrl = recommendProductPropBase.url;
         [cells addObject:model];
     }
@@ -868,7 +873,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     // 购物说明走H5 PROP_SHOPPING_HELP
     ProdProductPropBase *shoppingProductPropBase = [self getProdProductPropByCode:PROP_SHOPPING_HELP];
     if (shoppingProductPropBase.value.length > 0) {
-        RouteCjyDetailNoticeViewModel *model = [[RouteCjyDetailNoticeViewModel alloc] initTitle:shoppingProductPropBase.name iconImage:[UIImage imageNamed:@"routeDetailIcon19" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil]];
+        RouteCjyDetailNoticeViewModel *model = [[RouteCjyDetailNoticeViewModel alloc] initTitle:shoppingProductPropBase.name iconImage:[UIImage imageNamed:@"routeDetailIcon19" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil]];
         model.didSelectUrl = shoppingProductPropBase.url;
         [cells addObject:model];
     }
@@ -893,7 +898,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
         noticeProductPropBase.value = importantProductPropBase.value;
     }
     if (noticeProductPropBase.value.length > 0) {
-        [cells addObject:[[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"reverseNotice" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] title:@"预订须知" detailText:@"" arrow:NO]];
+        [cells addObject:[[RouteCjyDetailImageTitleViewModel alloc] initWithImage:[UIImage imageNamed:@"reverseNotice" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] title:@"预订须知" detailText:@"" arrow:NO]];
         
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:@"ReserveNoticeCellIdentifier"];
         
@@ -963,10 +968,11 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     self.routeProduct.productType = self.routeProduct.categoryName;
     self.routeProduct.visitDay = [NSString stringWithFormat:@"%d", self.routeProduct.lineRouteNumOfDays];
     [self requestAdvertiseBehavior];
+    [self requestProductUsableCouponWithProductId:@(self.routeProduct.productId) categoryId:@(self.routeProduct.bizCategoryId)];
     [WapperUM event:[self getUmengCode:@"040"]];
     NSString *rangeType = [LvmmCjyCommonFunction CMSplicingForwardSlashWithString:self.routeProduct.cmProductRangeType];
     NSString *packageType = [LvmmCjyCommonFunction CMSplicingForwardSlashWithString:[LvmmCjyCommonFunction CMPackageTypeWithBool:self.routeProduct.packageTypeFlag]];
-    [LvmmTagSupport firePageView:[NSString stringWithFormat:@"IP_出境游_产品详情_%@_%@_常规_%lld", [NSString stringWithFormat:@"%@%@%@",rangeType,packageType,self.routeProduct.cmCategoryName], self.routeProduct.cmProductType, self.routeProduct.productId]
+    [LvmmTagSupport firePageView:[LvmmTagSupport multisiteClientIdWithArray:@[CMCJY]] pi:[NSString stringWithFormat:@"IP_出境游_产品详情_%@_%@_常规_%lld", [NSString stringWithFormat:@"%@%@%@",rangeType,packageType,self.routeProduct.cmCategoryName], self.routeProduct.cmProductType, self.routeProduct.productId]
                               cg:[NSString stringWithFormat:@"IP_Abroad_ProductDetail_%@", [LvmmCjyCommonFunction parseBizCategoryIdToEnName:self.routeProduct.bizCategoryId andSubCategoryId:self.routeProduct.subCategoryId]]
                               se:@""
                               sr:@""
@@ -1007,6 +1013,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
         }
         self.routeProduct.clientImageBaseVos = tempArr;
     }
+    
     routeDetailImageCell = [[CjyDetailImageCell alloc] initWithStyle:UITableViewCellStyleDefault
                                                      reuseIdentifier:@"routeDetailImageCellIdentifier"
                                                   withImageBaseArray:[self.routeProduct.clientImageBaseVos copy]
@@ -1014,7 +1021,10 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
                                                        isPlaceDetail:NO
                                                      hasCommentScore:nil
                                                      hasCountComment:self.routeProduct.countComment
-                                                            hasVideo:self.routeProduct.hasVideo];
+                                                            hasVideo:self.routeProduct.hasVideo
+                                                        routeProduct:self.routeProduct];
+    
+    
     routeNameCell = [[CjyNameCell alloc] initWithStyle:UITableViewCellStyleDefault routeReuseIdentifier:@"routeNameCellIdentifier" withDelegate:self];
     [routeNameCell resetNameCellFrame:self.routeProduct];
     
@@ -1063,7 +1073,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
 }
 
 - (void)initbottomBar {
-    bottomBar = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.bounds) - 44, [UIScreen lvScreenWidth], 44)];
+    bottomBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 44)];
     bottomBar.backgroundColor = [UIColor lvColorWithHexadecimal:kColorMainWhite];
     bottomBar.hidden = NO;
     [self.view addSubview:bottomBar];
@@ -1072,7 +1082,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     UIButton *collectButton = [UIButton buttonWithType:UIButtonTypeCustom];
     collectButton.frame = CGRectMake(0, 0, buttonWidth, CGRectGetHeight(bottomBar.bounds));
     collectButton.tag = BOTTOM_TAG + 1;
-    [collectButton setImage:self.routeProduct.hasIn ? [UIImage imageNamed:@"routeBotCollectSuccess.png" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] : [UIImage imageNamed:@"routeBotCollect.png" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+    [collectButton setImage:self.routeProduct.hasIn ? [UIImage imageNamed:@"routeBotCollectSuccess.png" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] : [UIImage imageNamed:@"routeBotCollect.png" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     [collectButton setTitle:@"收藏" forState:UIControlStateNormal];
     [collectButton setTitleColor:[UIColor lvColorWithHexadecimal:kColorTextLightGray] forState:UIControlStateNormal];
     collectButton.titleLabel.font = [UIFont lvFontWithHelveticaBoldSize:kFontFifth12];
@@ -1090,7 +1100,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     [bottomBar addSubview:verLine];
     UIButton *serviceButton = [UIButton buttonWithType:UIButtonTypeCustom];
     serviceButton.frame = CGRectMake(buttonWidth + 0.5, 0, buttonWidth, CGRectGetHeight(bottomBar.bounds));
-    [serviceButton setImage:[UIImage imageNamed:@"routeBotService.png" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+    [serviceButton setImage:[UIImage imageNamed:@"routeBotService.png" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     [serviceButton setTitle:@"客服" forState:UIControlStateNormal];
     [serviceButton setTitleColor:[UIColor lvColorWithHexadecimal:kColorTextLightGray] forState:UIControlStateNormal];
     serviceButton.titleLabel.font = [UIFont lvFontWithHelveticaBoldSize:kFontFifth12];
@@ -1120,11 +1130,16 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
         [orderButton addTarget:self action:@selector(onlineOrderAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     [bottomBar addSubview:orderButton];
+    
+    [bottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.mas_equalTo(0);
+        make.height.mas_equalTo(44);
+    }];
 }
 
 - (void)updateCollectButtonImage {
     UIButton *collectButton = (UIButton *)[bottomBar viewWithTag:BOTTOM_TAG + 1];
-    [collectButton setImage:self.routeProduct.hasIn ? [UIImage imageNamed:@"routeBotCollectSuccess.png" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] : [UIImage imageNamed:@"routeBotCollect.png" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+    [collectButton setImage:self.routeProduct.hasIn ? [UIImage imageNamed:@"routeBotCollectSuccess.png" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] : [UIImage imageNamed:@"routeBotCollect.png" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
 }
 
 #pragma -mark
@@ -1149,6 +1164,15 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     setup.indicatorStyle = LVIndicatorStyleNoIndicator;
     [setup changeReqDic:requestParams];
     [self.lvmmNetwork requestVstApiWithSetup:setup];
+}
+
+- (void)requestProductUsableCouponWithProductId:(NSNumber *)productId
+                                     categoryId:(NSNumber *)categoryId {
+    LVMMRequestSetup *setup = [[LVMMRequestSetup alloc] initWithApiMethod:@"api.com.user.getProductUsableCoupon" apiVersion:@"1.0.0"];
+    setup.indicatorStyle = LVIndicatorStyleNoIndicator;
+    setup.methodBack = @"productUsableCoupon";
+    [setup changeReqDic:@{@"productId": productId, @"categoryId": categoryId}];
+    [self.lvmmNetwork requestVstUssoApiWithSetup:setup];
 }
 
 // 获取某个行程的形成结构化接口
@@ -1393,7 +1417,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
         noticeCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:noticeCellIdentifier];
         UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen lvScreenWidth], 100)];
         headerView.backgroundColor = [UIColor clearColor];
-        UIImageView *iconImagView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lvDefault.png" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil]];
+        UIImageView *iconImagView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lvDefault.png" inBundle:LVMM_ROUTE_CJY_BUNDLE compatibleWithTraitCollection:nil]];
         iconImagView.frame = CGRectMake(([UIScreen lvScreenWidth] - 55) / 2, 5, 55, 55);
         [headerView addSubview:iconImagView];
         UILabel *noticeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 65, [UIScreen lvScreenWidth], 20)];
@@ -1522,6 +1546,17 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
             bottomHeight += 30 + CGRectGetHeight(recommentPageScrollView.bounds);
         }
         [self rhinoStatIsFst:NO];
+    } else if ([request.methodBack isEqualToString:@"productUsableCoupon"]) {
+        NSMutableArray *userCouponsProductResponse = [NSMutableArray array];
+        for (NSMutableDictionary *dic in [LvmmParser parseArrayFromDic:request.dictionaryData forKey:@"userCouponsProductResponse"] ) {
+            UserCouponProductResponse *userCouponProductResponse = [UserCouponProductResponse parseFromJsonDictionary:dic];
+            [userCouponsProductResponse addObject:userCouponProductResponse];
+        }
+        self.routeProduct.userCouponsProductResponse = userCouponsProductResponse;
+        self.routeProduct.validGoodIds = [LvmmParser parseArrayFromDic:request.dictionaryData forKey:@"validGoodIds"];
+        self.routeProduct.hongBaoUrl = [LvmmParser parseStringFromDic:request.dictionaryData forKey:@"hongBaoUrl"];
+        [self updateCellsArray];
+        [self.cjyTableview reloadData];
     }
 }
 
@@ -1611,8 +1646,6 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     RouteCjyDetailBaseViewModel *viewModel = [[self.cellArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     [self didSelectModel:viewModel];
-    //理解、反应、操作、意识、策略、执行力
-    //伪装、思辨、诱导、
     [self reloadTableviewData];
 }
 
@@ -1635,7 +1668,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
         UIViewController *vc = [[LVMediator sharedMediator] LVMediator_FocusWebViewControllerWithUrl:self.routeProduct.stampGroupsUrl];
         [[LVAdapterManager currentNavigationService] pushVC:vc animated:YES];
     } else if ([viewModel isKindOfClass:[RouteCjyDetailDateChooseViewModel class]]) { // 选择日期
-        [self gnyDateChooseviewModelDidClickMoreDate:(RouteCjyDetailDateChooseViewModel *)viewModel];
+        [self dateChooseviewModelDidClickMoreDate:(RouteCjyDetailDateChooseViewModel *)viewModel];
     } else if ([viewModel.selectId isEqualToString:kRouteCjyDetailDepartureSelectId]) {//点击更多出发地
         if (self.routeProduct.fromDest.length > 0 && self.routeProduct.multipleDeparture && self.routeProduct.multipleDeparture.count > 0) {
             __weak typeof(self) weakSelf = self;
@@ -1645,6 +1678,9 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
             }};
             [[LVAdapterManager currentNavigationService] pushVC:vc animated:YES];
         }
+    } else if ([viewModel.selectId isEqualToString:kRouteCjyDetailCouponSelectId]) {
+        UIViewController *vc = [[LVMediator sharedMediator] LVMediator_FocusWebViewControllerWithUrl:self.routeProduct.hongBaoUrl andWebTitle:@"领红包"];
+        [[LVAdapterManager currentNavigationService] pushVC:vc animated:YES];
     }
     //    else if([viewModel.selectId isEqualToString:kRouteCjyDetailProductFeatureMoreSelectId]){
     //        //如果是查看更多按钮被点击了，将其标记位置反
@@ -1704,12 +1740,12 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
 
 #pragma mark RouteCjyDetailDateChooseViewModelDelegate 日历价格表
 
-- (void)gnyDateChooseviewModel:(RouteCjyDetailDateChooseViewModel *)model didSelectDate:(ProdGroupDateVo *)prodGroupDateVo {
+- (void)dateChooseviewModel:(RouteCjyDetailDateChooseViewModel *)model didSelectDate:(ProdGroupDateVo *)prodGroupDateVo {
     self.selectedDateString = [prodGroupDateVo.departureDate copy];
     [self selectCalendar];
 }
 
-- (void)gnyDateChooseviewModelDidClickMoreDate:(RouteCjyDetailDateChooseViewModel *)model {
+- (void)dateChooseviewModelDidClickMoreDate:(RouteCjyDetailDateChooseViewModel *)model {
     [self selectCalendar];
 }
 
@@ -1740,6 +1776,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     if (self.routeProduct.bizCategoryId == Category_Route_Local) {
         // 出境游 当地游品类 不传选中日期
         self.routeProduct.routeBizType = TravelType_ZBY;
+        [params setObject:@"CMCJY" forKey:@"CMCJY"];
         UIViewController *vc = [[LVMediator sharedMediator] LVMediator_CalendarZbyViewControllerWithParams:params];
         [[LVAdapterManager currentNavigationService] pushVC:vc animated:YES];
     } else {
@@ -1960,7 +1997,7 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.font = [UIFont lvFontWithHelveticaSize:kFontForth14];
         titleLabel.textColor = [UIColor lvColorWithHexadecimal:kColorTextDarkGray];
-        titleLabel.text = @"为了节约您的时间，请告知客服产品编号";
+        titleLabel.text = @"为了节约您的时间，请告之客服产品编号";
         titleLabel.textAlignment = NSTextAlignmentCenter;
         [filterView addSubview:titleLabel];
         
@@ -2093,13 +2130,14 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
         if (currentProdLineRouteVo.listNotice.count > 0) {
             routeNoticeCell = [[CjyNoticeCell alloc] initWithStyle:UITableViewCellStyleDefault
                                                    reuseIdentifier:@"routeGnyNoticeCell"
-                                                withGnyNoticeArray:[currentProdLineRouteVo.listNotice copy]
-                                                  withContentWidth:screenWidth];
+                                                   withNoticeArray:[currentProdLineRouteVo.listNotice copy]
+                                                  withContentWidth:screenWidth
+                                                     categoryStyle:RouteCjyCategoryStylePackaged];
         }
     } else {
         if (currentProdLineRouteVo.listNotice.count > 0) {
-            [routeNoticeCell updateRouteNoticeCellWithGnyNoticeArray:[currentProdLineRouteVo.listNotice copy]
-                                                    withContentWidth:screenWidth];
+            [routeNoticeCell updateRouteNoticeCellWithNoticeArray:[currentProdLineRouteVo.listNotice copy]
+                                                 withContentWidth:screenWidth];
         } else {
             routeNoticeCell = nil;
         }
@@ -2134,8 +2172,19 @@ typedef NS_ENUM(NSUInteger, kRouteCjyTapViewType) {
     [self.lvmmNetwork requestVstRouteApiWithSetup:setup];
 }
 
-#pragma mark -
-#pragma mark Initial
+#pragma mark - Lazy load
+- (RouteCjyDetailExpandCell *)showMoreProductDetailCell {
+    if (!_showMoreProductDetailCell) {
+        _showMoreProductDetailCell = [[RouteCjyDetailExpandCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"productShowMoreCellReuseIdentifier" NormalTxt:nil SelectedTxt:nil];
+        _showMoreProductDetailCell.selectedSignal = [RACSubject subject];
+        [_showMoreProductDetailCell.selectedSignal subscribeNext:^(id x) {
+            BOOL show = [x boolValue];
+            _showMoreProductDetailCell.hasShown = !show;
+        }];
+    }
+    return _showMoreProductDetailCell;
+}
+
 - (LVMMNetwork *)lvmmNetwork {
     if (!_lvmmNetwork) {
         self.lvmmNetwork = [[LVMMNetwork alloc] init];
