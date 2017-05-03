@@ -12,15 +12,9 @@
 
 @implementation C
 
-- (instancetype)init {
-    if (self = [super init]) {
-        self.a = [A new];
-        self.b = [B new];
-    }
-    return self;
-}
-
 - (void)dealloc {
+    NSLog(@"%@",self.a);
+    NSLog(@"%@",self.b);
     NSLog(@"%s", __FUNCTION__);
 }
 

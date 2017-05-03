@@ -18,9 +18,22 @@
         self.a = [A new];
         self.b = [B new];
         self.c = [C new];
+        
+        self.a.b = self.b;
+        self.a.c = self.c;
+        
+        self.b.a = self.a;
+        self.b.c = self.c;
+        
+        self.c.a = self.a;
+        self.c.b = self.b;
+
     }
     return self;
 }
+
+
+
 
 - (void)dealloc {
     NSLog(@"%s", __FUNCTION__);

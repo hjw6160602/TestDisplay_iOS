@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [[Manager alloc] init];
+    
 }
 
 - (void)dealloc {

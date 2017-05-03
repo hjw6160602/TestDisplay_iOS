@@ -12,13 +12,6 @@
 
 @implementation B
 
-- (instancetype)init {
-    if (self = [super init]) {
-        self.a = [A new];
-        self.c = [C new];
-    }
-    return self;
-}
 
 - (void)dealloc {
     NSLog(@"%s", __FUNCTION__);
