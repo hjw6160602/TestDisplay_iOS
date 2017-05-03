@@ -7,23 +7,21 @@
 //
 
 #import "ViewController.h"
+#import "Manager.h"
 
 @interface ViewController ()
-
+@property (nonatomic, strong) Manager *manager;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.manager = [[Manager alloc] init];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)dealloc {
+    NSLog(@"%s", __FUNCTION__);
 }
-
 
 @end

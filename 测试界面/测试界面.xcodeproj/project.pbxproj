@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		675E222A1EB9BD13004E616F /* Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 675E22291EB9BD13004E616F /* Manager.m */; };
+		675E222D1EB9BE87004E616F /* A.m in Sources */ = {isa = PBXBuildFile; fileRef = 675E222C1EB9BE87004E616F /* A.m */; };
+		675E22301EB9BE92004E616F /* B.m in Sources */ = {isa = PBXBuildFile; fileRef = 675E222F1EB9BE92004E616F /* B.m */; };
+		675E22331EB9BE9A004E616F /* C.m in Sources */ = {isa = PBXBuildFile; fileRef = 675E22321EB9BE9A004E616F /* C.m */; };
 		67DD219D1EB21F100009D2FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD219C1EB21F100009D2FB /* main.m */; };
 		67DD21A01EB21F100009D2FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD219F1EB21F100009D2FB /* AppDelegate.m */; };
 		67DD21A31EB21F100009D2FB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD21A21EB21F100009D2FB /* ViewController.m */; };
@@ -29,6 +33,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		675E22281EB9BD13004E616F /* Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Manager.h; sourceTree = "<group>"; };
+		675E22291EB9BD13004E616F /* Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Manager.m; sourceTree = "<group>"; };
+		675E222B1EB9BE87004E616F /* A.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A.h; sourceTree = "<group>"; };
+		675E222C1EB9BE87004E616F /* A.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A.m; sourceTree = "<group>"; };
+		675E222E1EB9BE92004E616F /* B.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = B.h; sourceTree = "<group>"; };
+		675E222F1EB9BE92004E616F /* B.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = B.m; sourceTree = "<group>"; };
+		675E22311EB9BE9A004E616F /* C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C.h; sourceTree = "<group>"; };
+		675E22321EB9BE9A004E616F /* C.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = C.m; sourceTree = "<group>"; };
 		67DD21981EB21F100009D2FB /* 测试界面.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "测试界面.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67DD219C1EB21F100009D2FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		67DD219E1EB21F100009D2FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -137,6 +149,14 @@
 			children = (
 				67DD21BB1EB21F4D0009D2FB /* AppDelegate.h */,
 				67DD21BC1EB21F4D0009D2FB /* AppDelegate.m */,
+				675E22281EB9BD13004E616F /* Manager.h */,
+				675E22291EB9BD13004E616F /* Manager.m */,
+				675E222B1EB9BE87004E616F /* A.h */,
+				675E222C1EB9BE87004E616F /* A.m */,
+				675E222E1EB9BE92004E616F /* B.h */,
+				675E222F1EB9BE92004E616F /* B.m */,
+				675E22311EB9BE9A004E616F /* C.h */,
+				675E22321EB9BE9A004E616F /* C.m */,
 				67DD21BE1EB21F4D0009D2FB /* ViewController.h */,
 				67DD21BF1EB21F4D0009D2FB /* ViewController.m */,
 				67DD21C11EB21F4D0009D2FB /* Main.storyboard */,
@@ -330,9 +350,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				675E22301EB9BE92004E616F /* B.m in Sources */,
+				675E222D1EB9BE87004E616F /* A.m in Sources */,
 				67DD21C01EB21F4D0009D2FB /* ViewController.m in Sources */,
 				67DD21BD1EB21F4D0009D2FB /* AppDelegate.m in Sources */,
+				675E22331EB9BE9A004E616F /* C.m in Sources */,
 				67DD21BA1EB21F4D0009D2FB /* main.m in Sources */,
+				675E222A1EB9BD13004E616F /* Manager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +624,7 @@
 				67DD21F31EB320470009D2FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
