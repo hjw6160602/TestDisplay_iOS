@@ -36,9 +36,8 @@
     }];
 
     [right mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(20, 20));
-        make.right.mas_equalTo(-10);
-        make.centerY.equalTo(self.contentView);
+        make.top.bottom.right.mas_equalTo(0);
+        make.width.mas_equalTo(40);
     }];
 }
 
