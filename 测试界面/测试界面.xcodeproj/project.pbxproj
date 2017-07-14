@@ -14,6 +14,11 @@
 		6709402D1EFCEF4500A1722F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6709402C1EFCEF4500A1722F /* Assets.xcassets */; };
 		670940301EFCEF4500A1722F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6709402E1EFCEF4500A1722F /* LaunchScreen.storyboard */; };
 		670940371EFCF1E800A1722F /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 670940361EFCF1E800A1722F /* CustomViewController.m */; };
+		6752618E1F136E0800C73B35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6752618D1F136E0800C73B35 /* AppDelegate.swift */; };
+		675261901F136E0800C73B35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6752618F1F136E0800C73B35 /* ViewController.swift */; };
+		675261931F136E0800C73B35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 675261911F136E0800C73B35 /* Main.storyboard */; };
+		675261951F136E0800C73B35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 675261941F136E0800C73B35 /* Assets.xcassets */; };
+		675261981F136E0800C73B35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 675261961F136E0800C73B35 /* LaunchScreen.storyboard */; };
 		675E222A1EB9BD13004E616F /* Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 675E22291EB9BD13004E616F /* Manager.m */; };
 		675E222D1EB9BE87004E616F /* A.m in Sources */ = {isa = PBXBuildFile; fileRef = 675E222C1EB9BE87004E616F /* A.m */; };
 		675E22301EB9BE92004E616F /* B.m in Sources */ = {isa = PBXBuildFile; fileRef = 675E222F1EB9BE92004E616F /* B.m */; };
@@ -78,6 +83,13 @@
 		670940311EFCEF4500A1722F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		670940351EFCF1E800A1722F /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
 		670940361EFCF1E800A1722F /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
+		6752618B1F136E0800C73B35 /* TextField的DidBeginEditing代理.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TextField的DidBeginEditing代理.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6752618D1F136E0800C73B35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6752618F1F136E0800C73B35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		675261921F136E0800C73B35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		675261941F136E0800C73B35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		675261971F136E0800C73B35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		675261991F136E0800C73B35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		675E22281EB9BD13004E616F /* Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Manager.h; sourceTree = "<group>"; };
 		675E22291EB9BD13004E616F /* Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Manager.m; sourceTree = "<group>"; };
 		675E222B1EB9BE87004E616F /* A.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A.h; sourceTree = "<group>"; };
@@ -176,6 +188,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		675261881F136E0800C73B35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		67790FD31EFBA40000790503 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -239,6 +258,19 @@
 				670940211EFCEF4500A1722F /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6752618C1F136E0800C73B35 /* TextField的DidBeginEditing代理 */ = {
+			isa = PBXGroup;
+			children = (
+				6752618D1F136E0800C73B35 /* AppDelegate.swift */,
+				6752618F1F136E0800C73B35 /* ViewController.swift */,
+				675261911F136E0800C73B35 /* Main.storyboard */,
+				675261941F136E0800C73B35 /* Assets.xcassets */,
+				675261961F136E0800C73B35 /* LaunchScreen.storyboard */,
+				675261991F136E0800C73B35 /* Info.plist */,
+			);
+			path = "TextField的DidBeginEditing代理";
 			sourceTree = "<group>";
 		};
 		67790FD71EFBA40000790503 /* 奇怪的约束不显示 */ = {
@@ -341,6 +373,7 @@
 				6784087F1EE8F048006AD1DB /* 结构体赋值 */,
 				67790FD71EFBA40000790503 /* 奇怪的约束不显示 */,
 				6709401F1EFCEF4500A1722F /* 可编辑的TableViewCell */,
+				6752618C1F136E0800C73B35 /* TextField的DidBeginEditing代理 */,
 				67DD21991EB21F100009D2FB /* Products */,
 				F9783ED28634FB7A400CB893 /* Pods */,
 				7CE5F2AA43891DAEB099BE46 /* Frameworks */,
@@ -356,6 +389,7 @@
 				6784087E1EE8F048006AD1DB /* 结构体赋值.app */,
 				67790FD61EFBA40000790503 /* 奇怪的约束不显示.app */,
 				6709401E1EFCEF4500A1722F /* 可编辑的TableViewCell.app */,
+				6752618B1F136E0800C73B35 /* TextField的DidBeginEditing代理.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -479,6 +513,23 @@
 			productReference = 6709401E1EFCEF4500A1722F /* 可编辑的TableViewCell.app */;
 			productType = "com.apple.product-type.application";
 		};
+		6752618A1F136E0800C73B35 /* TextField的DidBeginEditing代理 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6752619C1F136E0800C73B35 /* Build configuration list for PBXNativeTarget "TextField的DidBeginEditing代理" */;
+			buildPhases = (
+				675261871F136E0800C73B35 /* Sources */,
+				675261881F136E0800C73B35 /* Frameworks */,
+				675261891F136E0800C73B35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TextField的DidBeginEditing代理";
+			productName = "TextField的DidBeginEditing代理";
+			productReference = 6752618B1F136E0800C73B35 /* TextField的DidBeginEditing代理.app */;
+			productType = "com.apple.product-type.application";
+		};
 		67790FD51EFBA40000790503 /* 奇怪的约束不显示 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 67790FEC1EFBA40000790503 /* Build configuration list for PBXNativeTarget "奇怪的约束不显示" */;
@@ -582,6 +633,11 @@
 						DevelopmentTeam = 7R3MSEN8NJ;
 						ProvisioningStyle = Automatic;
 					};
+					6752618A1F136E0800C73B35 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 7R3MSEN8NJ;
+						ProvisioningStyle = Automatic;
+					};
 					67790FD51EFBA40000790503 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 7R3MSEN8NJ;
@@ -628,6 +684,7 @@
 				6784087D1EE8F048006AD1DB /* 结构体赋值 */,
 				67790FD51EFBA40000790503 /* 奇怪的约束不显示 */,
 				6709401D1EFCEF4500A1722F /* 可编辑的TableViewCell */,
+				6752618A1F136E0800C73B35 /* TextField的DidBeginEditing代理 */,
 			);
 		};
 /* End PBXProject section */
@@ -640,6 +697,16 @@
 				670940301EFCEF4500A1722F /* LaunchScreen.storyboard in Resources */,
 				6709402D1EFCEF4500A1722F /* Assets.xcassets in Resources */,
 				6709402B1EFCEF4500A1722F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		675261891F136E0800C73B35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				675261981F136E0800C73B35 /* LaunchScreen.storyboard in Resources */,
+				675261951F136E0800C73B35 /* Assets.xcassets in Resources */,
+				675261931F136E0800C73B35 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,6 +822,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		675261871F136E0800C73B35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				675261901F136E0800C73B35 /* ViewController.swift in Sources */,
+				6752618E1F136E0800C73B35 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		67790FD21EFBA40000790503 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -836,6 +912,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				6709402F1EFCEF4500A1722F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		675261911F136E0800C73B35 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				675261921F136E0800C73B35 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		675261961F136E0800C73B35 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				675261971F136E0800C73B35 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -944,6 +1036,35 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SaiDicaprio.lvmama.----TableViewCell";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6752619A1F136E0800C73B35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7R3MSEN8NJ;
+				INFOPLIST_FILE = "TextField的DidBeginEditing代理/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SaiDicaprio.lvmama.TextField-DidBeginEditing--";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		6752619B1F136E0800C73B35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7R3MSEN8NJ;
+				INFOPLIST_FILE = "TextField的DidBeginEditing代理/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SaiDicaprio.lvmama.TextField-DidBeginEditing--";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1167,6 +1288,15 @@
 			buildConfigurations = (
 				670940321EFCEF4500A1722F /* Debug */,
 				670940331EFCEF4500A1722F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6752619C1F136E0800C73B35 /* Build configuration list for PBXNativeTarget "TextField的DidBeginEditing代理" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6752619A1F136E0800C73B35 /* Debug */,
+				6752619B1F136E0800C73B35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
