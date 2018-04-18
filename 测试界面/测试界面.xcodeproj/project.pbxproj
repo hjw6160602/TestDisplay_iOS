@@ -14,6 +14,12 @@
 		6709402D1EFCEF4500A1722F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6709402C1EFCEF4500A1722F /* Assets.xcassets */; };
 		670940301EFCEF4500A1722F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6709402E1EFCEF4500A1722F /* LaunchScreen.storyboard */; };
 		670940371EFCF1E800A1722F /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 670940361EFCF1E800A1722F /* CustomViewController.m */; };
+		67282AF820871F180095B77A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67282AF720871F180095B77A /* AppDelegate.m */; };
+		67282AFB20871F180095B77A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67282AFA20871F180095B77A /* ViewController.m */; };
+		67282AFE20871F180095B77A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67282AFC20871F180095B77A /* Main.storyboard */; };
+		67282B0020871F180095B77A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67282AFF20871F180095B77A /* Assets.xcassets */; };
+		67282B0320871F180095B77A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67282B0120871F180095B77A /* LaunchScreen.storyboard */; };
+		67282B0620871F180095B77A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67282B0520871F180095B77A /* main.m */; };
 		6752618E1F136E0800C73B35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6752618D1F136E0800C73B35 /* AppDelegate.swift */; };
 		675261901F136E0800C73B35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6752618F1F136E0800C73B35 /* ViewController.swift */; };
 		675261931F136E0800C73B35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 675261911F136E0800C73B35 /* Main.storyboard */; };
@@ -83,6 +89,16 @@
 		670940311EFCEF4500A1722F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		670940351EFCF1E800A1722F /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
 		670940361EFCF1E800A1722F /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
+		67282AF420871F180095B77A /* 地图测试Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "地图测试Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		67282AF620871F180095B77A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		67282AF720871F180095B77A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		67282AF920871F180095B77A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		67282AFA20871F180095B77A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		67282AFD20871F180095B77A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		67282AFF20871F180095B77A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		67282B0220871F180095B77A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		67282B0420871F180095B77A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67282B0520871F180095B77A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6752618B1F136E0800C73B35 /* TextField的DidBeginEditing代理.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TextField的DidBeginEditing代理.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6752618D1F136E0800C73B35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6752618F1F136E0800C73B35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +204,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		67282AF120871F180095B77A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		675261881F136E0800C73B35 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,6 +281,22 @@
 				670940211EFCEF4500A1722F /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		67282AF520871F180095B77A /* 地图测试Demo */ = {
+			isa = PBXGroup;
+			children = (
+				67282AF620871F180095B77A /* AppDelegate.h */,
+				67282AF720871F180095B77A /* AppDelegate.m */,
+				67282AF920871F180095B77A /* ViewController.h */,
+				67282AFA20871F180095B77A /* ViewController.m */,
+				67282AFC20871F180095B77A /* Main.storyboard */,
+				67282AFF20871F180095B77A /* Assets.xcassets */,
+				67282B0120871F180095B77A /* LaunchScreen.storyboard */,
+				67282B0420871F180095B77A /* Info.plist */,
+				67282B0520871F180095B77A /* main.m */,
+			);
+			path = "地图测试Demo";
 			sourceTree = "<group>";
 		};
 		6752618C1F136E0800C73B35 /* TextField的DidBeginEditing代理 */ = {
@@ -374,6 +413,7 @@
 				67790FD71EFBA40000790503 /* 奇怪的约束不显示 */,
 				6709401F1EFCEF4500A1722F /* 可编辑的TableViewCell */,
 				6752618C1F136E0800C73B35 /* TextField的DidBeginEditing代理 */,
+				67282AF520871F180095B77A /* 地图测试Demo */,
 				67DD21991EB21F100009D2FB /* Products */,
 				F9783ED28634FB7A400CB893 /* Pods */,
 				7CE5F2AA43891DAEB099BE46 /* Frameworks */,
@@ -390,6 +430,7 @@
 				67790FD61EFBA40000790503 /* 奇怪的约束不显示.app */,
 				6709401E1EFCEF4500A1722F /* 可编辑的TableViewCell.app */,
 				6752618B1F136E0800C73B35 /* TextField的DidBeginEditing代理.app */,
+				67282AF420871F180095B77A /* 地图测试Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -513,6 +554,23 @@
 			productReference = 6709401E1EFCEF4500A1722F /* 可编辑的TableViewCell.app */;
 			productType = "com.apple.product-type.application";
 		};
+		67282AF320871F180095B77A /* 地图测试Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67282B0920871F180095B77A /* Build configuration list for PBXNativeTarget "地图测试Demo" */;
+			buildPhases = (
+				67282AF020871F180095B77A /* Sources */,
+				67282AF120871F180095B77A /* Frameworks */,
+				67282AF220871F180095B77A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "地图测试Demo";
+			productName = "地图测试Demo";
+			productReference = 67282AF420871F180095B77A /* 地图测试Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		6752618A1F136E0800C73B35 /* TextField的DidBeginEditing代理 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6752619C1F136E0800C73B35 /* Build configuration list for PBXNativeTarget "TextField的DidBeginEditing代理" */;
@@ -633,6 +691,11 @@
 						DevelopmentTeam = 7R3MSEN8NJ;
 						ProvisioningStyle = Automatic;
 					};
+					67282AF320871F180095B77A = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = 7R3MSEN8NJ;
+						ProvisioningStyle = Automatic;
+					};
 					6752618A1F136E0800C73B35 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 7R3MSEN8NJ;
@@ -685,6 +748,7 @@
 				67790FD51EFBA40000790503 /* 奇怪的约束不显示 */,
 				6709401D1EFCEF4500A1722F /* 可编辑的TableViewCell */,
 				6752618A1F136E0800C73B35 /* TextField的DidBeginEditing代理 */,
+				67282AF320871F180095B77A /* 地图测试Demo */,
 			);
 		};
 /* End PBXProject section */
@@ -697,6 +761,16 @@
 				670940301EFCEF4500A1722F /* LaunchScreen.storyboard in Resources */,
 				6709402D1EFCEF4500A1722F /* Assets.xcassets in Resources */,
 				6709402B1EFCEF4500A1722F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67282AF220871F180095B77A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67282B0320871F180095B77A /* LaunchScreen.storyboard in Resources */,
+				67282B0020871F180095B77A /* Assets.xcassets in Resources */,
+				67282AFE20871F180095B77A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -822,6 +896,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		67282AF020871F180095B77A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67282AFB20871F180095B77A /* ViewController.m in Sources */,
+				67282B0620871F180095B77A /* main.m in Sources */,
+				67282AF820871F180095B77A /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		675261871F136E0800C73B35 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -912,6 +996,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				6709402F1EFCEF4500A1722F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		67282AFC20871F180095B77A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67282AFD20871F180095B77A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		67282B0120871F180095B77A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67282B0220871F180095B77A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1036,6 +1136,56 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SaiDicaprio.lvmama.----TableViewCell";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		67282B0720871F180095B77A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7R3MSEN8NJ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "地图测试Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SaiDicaprio.----Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		67282B0820871F180095B77A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7R3MSEN8NJ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "地图测试Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SaiDicaprio.----Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1292,6 +1442,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		67282B0920871F180095B77A /* Build configuration list for PBXNativeTarget "地图测试Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67282B0720871F180095B77A /* Debug */,
+				67282B0820871F180095B77A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6752619C1F136E0800C73B35 /* Build configuration list for PBXNativeTarget "TextField的DidBeginEditing代理" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1299,6 +1458,7 @@
 				6752619B1F136E0800C73B35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		67790FEC1EFBA40000790503 /* Build configuration list for PBXNativeTarget "奇怪的约束不显示" */ = {
 			isa = XCConfigurationList;

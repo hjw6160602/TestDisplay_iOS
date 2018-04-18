@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+@import JavaScriptCore;
 
 @interface ViewController ()
 
@@ -24,6 +25,8 @@ typedef struct IFPoint {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    JSContext
+    JSExport
     const char *specDate = "2017";
     VisitInfo visitInfo = {2, 0, 1, specDate};
     IFPoint point = {0, 0};
