@@ -21,6 +21,7 @@
 		67282B0320871F180095B77A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67282B0120871F180095B77A /* LaunchScreen.storyboard */; };
 		67282B0620871F180095B77A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67282B0520871F180095B77A /* main.m */; };
 		67282B0C2087236F0095B77A /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 67282B0B2087236F0095B77A /* MyAnnotation.m */; };
+		67282E1E2089BFF30095B77A /* shanghai.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 67282E1D2089BFF30095B77A /* shanghai.gpx */; };
 		6752618E1F136E0800C73B35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6752618D1F136E0800C73B35 /* AppDelegate.swift */; };
 		675261901F136E0800C73B35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6752618F1F136E0800C73B35 /* ViewController.swift */; };
 		675261931F136E0800C73B35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 675261911F136E0800C73B35 /* Main.storyboard */; };
@@ -102,6 +103,7 @@
 		67282B0520871F180095B77A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		67282B0A2087236F0095B77A /* MyAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAnnotation.h; sourceTree = "<group>"; };
 		67282B0B2087236F0095B77A /* MyAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAnnotation.m; sourceTree = "<group>"; };
+		67282E1D2089BFF30095B77A /* shanghai.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = shanghai.gpx; sourceTree = "<group>"; };
 		6752618B1F136E0800C73B35 /* TextField的DidBeginEditing代理.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TextField的DidBeginEditing代理.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6752618D1F136E0800C73B35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6752618F1F136E0800C73B35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 		67282AF520871F180095B77A /* 地图测试Demo */ = {
 			isa = PBXGroup;
 			children = (
+				67282E1D2089BFF30095B77A /* shanghai.gpx */,
 				67282AF620871F180095B77A /* AppDelegate.h */,
 				67282AF720871F180095B77A /* AppDelegate.m */,
 				67282AF920871F180095B77A /* ViewController.h */,
@@ -773,6 +776,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67282E1E2089BFF30095B77A /* shanghai.gpx in Resources */,
 				67282B0320871F180095B77A /* LaunchScreen.storyboard in Resources */,
 				67282B0020871F180095B77A /* Assets.xcassets in Resources */,
 				67282AFE20871F180095B77A /* Main.storyboard in Resources */,

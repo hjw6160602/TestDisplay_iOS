@@ -14,6 +14,7 @@
 
 @interface ViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+/** 位置管理者 */
 @property (strong, nonatomic) CLLocationManager *locationManager;
 //2点之间的线路
 @property (assign, nonatomic) CLLocationCoordinate2D fromCoordinate;
@@ -22,59 +23,31 @@
 @property (assign, nonatomic) CLLocation *currentLocation;
 @property (assign, nonatomic) CLLocation *oldLocation;
 
+
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    //初始化地图
-    [self initWithMapView];
-    //初始化定位服务管理对象
-    [self initWithLocationManager];
-    
+    [self.mapView setUserTrackingMode:(MKUserTrackingModeFollow) animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     //开始定位
     [self.locationManager startUpdatingLocation];
-//    _txtQueryKey.delegate = self;
     
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     self.mapView.delegate = nil;
     self.locationManager.delegate = nil;
-//    _txtQueryKey.delegate = nil;
     //停止定位
     [self.locationManager stopUpdatingLocation];
 }
 
-- (void)initWithMapView {
-    //设置地图类型
-    self.mapView.mapType = MKMapTypeStandard;
-    //设置代理
-    self.mapView.delegate = self;
-    //开启自动定位
-    self.mapView.showsUserLocation = YES;
-    [self.mapView setUserTrackingMode:(MKUserTrackingModeFollow) animated:YES];
-}
-
-- (void)initWithLocationManager {
-    //初始化定位服务管理对象
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    [self.locationManager requestAlwaysAuthorization];
-    //设置精确度
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    //设置设备移动后获取位置信息的最小距离。单位为米
-    self.locationManager.distanceFilter = 10.0f;
-}
-
 //位置的实时更新
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-{
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     self.fromCoordinate = CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     self.mapView.centerCoordinate = userLocation.location.coordinate;
     //    CLLocationCoordinate2D center = userLocation.location.coordinate;
@@ -134,7 +107,6 @@
              [self.mapView addOverlay:route.polyline];
          }
      }];
-    
 }
 
 //线路的绘制
@@ -183,9 +155,12 @@
     return ann;
 }
 
+#pragma mark - CLLocationManagerDelegate
+
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     switch (status) {
         case kCLAuthorizationStatusNotDetermined:
+            NSLog(@"用户未决定");
             if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
                 [self.locationManager requestWhenInUseAuthorization];
             }
@@ -195,4 +170,27 @@
     }
 }
 
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    NSLog(@"已经定位");
+}
+
+#pragma mark - Lazy load
+- (CLLocationManager *)locationManager {
+    if (_locationManager == nil) {
+        // 实例化位置管理者
+        _locationManager = [[CLLocationManager alloc] init];
+        // 指定代理,代理中获取位置数据
+        _locationManager.delegate = self;
+        // 前台定位授权 官方文档中说明info.plist中必须有NSLocationWhenInUseUsageDescription键
+        [_locationManager requestWhenInUseAuthorization];
+        // 前后台定位授权 官方文档中说明info.plist中必须有NSLocationAlwaysUsageDescription键
+        [_locationManager requestAlwaysAuthorization];
+        //设置精确度
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        //设置设备移动后获取位置信息的最小距离。单位为米
+        _locationManager.distanceFilter = 10.0f;
+    }
+    return _locationManager;
+}
 @end
