@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ltE-FH-6i6">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="qDm-mQ-Hxo">
+            <objects>
+                <viewController id="Ql2-Ab-r0e" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kqd-wA-2jB"/>
+                        <viewControllerLayoutGuide type="bottom" id="4vR-LM-mec"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XPl-U6-03H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ptf-Gf-B1V">
+                                <rect key="frame" x="27" y="213" width="320" height="241"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="WRX-rD-fNM"/>
+                                    <constraint firstAttribute="height" constant="241" id="rLS-3C-LLG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                <state key="normal" title="PUSH">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="Z5b-m0-oqm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ptf-Gf-B1V" firstAttribute="centerY" secondItem="XPl-U6-03H" secondAttribute="centerY" id="2fo-4L-tHu"/>
+                            <constraint firstItem="Ptf-Gf-B1V" firstAttribute="centerX" secondItem="XPl-U6-03H" secondAttribute="centerX" id="inF-r1-sYU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cq0-Gq-l3j"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J85-1q-ujA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="45.600000000000001" y="32.833583208395808"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -36,13 +75,33 @@
                             <constraint firstItem="2ek-9q-Ous" firstAttribute="bottom" secondItem="zcv-x3-1qu" secondAttribute="top" id="kC9-Wq-Wfc"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="E0P-DY-iaO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="2ek-9q-Ous" id="dg2-qU-cwp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-319" y="40"/>
+            <point key="canvasLocation" x="910" y="33"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cTi-47-yfb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ltE-FH-6i6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Ty-1s-dQP">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ql2-Ab-r0e" kind="relationship" relationship="rootViewController" id="fdO-B5-Q7h"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="64G-oN-Dl7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-850" y="39"/>
         </scene>
     </scenes>
 </document>
