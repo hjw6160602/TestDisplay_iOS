@@ -17,10 +17,18 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 /** 位置管理者 */
 @property (strong, nonatomic) CLLocationManager *locationManager;
-//2点之间的线路
+/** 起始点坐标（当前位置）*/
 @property (assign, nonatomic) CLLocationCoordinate2D fromCoordinate;
+/** 终点坐标（酒店位置）*/
 @property (assign, nonatomic) CLLocationCoordinate2D toCoordinate;
-
+/** 路径规划方式 */
+@property (assign, nonatomic) MKDirectionsTransportType transportType;
+/*
+typedef NS_OPTIONS(NSUInteger, MKDirectionsTransportType) {
+    MKDirectionsTransportTypeAutomobile = 1 << 0,
+    MKDirectionsTransportTypeWalking = 1 << 1,
+}
+*/
 @end
 
 @implementation ViewController
@@ -29,7 +37,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.mapView setUserTrackingMode:(MKUserTrackingModeFollow) animated:YES];
-    self.toCoordinate = CLLocationCoordinate2DMake(31.2360868237,121.3917589188);
+    
+    self.fromCoordinate = CLLocationCoordinate2DMake(31.263743,121.398443);
+    self.toCoordinate = CLLocationCoordinate2DMake(31.236086,121.391758);
+    
+    self.transportType = MKDirectionsTransportTypeAutomobile;
+    MKDirectionsRequest *request = [self setupDirectionsRequest];
+    [self calculateDirectionsWithRequest:request];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -44,16 +58,59 @@
     [self.locationManager stopUpdatingLocation];
 }
 
+#pragma mark - Actions
+- (MKDirectionsRequest *)setupDirectionsRequest{
+    // 根据经纬度信息创建MKPlacemark对象
+    MKPlacemark *fromPlacemark = [[MKPlacemark alloc] initWithCoordinate:self.fromCoordinate addressDictionary:nil];
+    MKPlacemark *toPlacemark = [[MKPlacemark alloc] initWithCoordinate:self.toCoordinate addressDictionary:nil];
+    
+    // 根据起点和终点的Placemark对象撞见对应的mapItem对象
+    MKMapItem *fromItem = [[MKMapItem alloc] initWithPlacemark:fromPlacemark];
+    MKMapItem *toItem = [[MKMapItem alloc] initWithPlacemark:toPlacemark];
+    
+    // 根据起点和终点的mapItem对象撞见DirectionRequest请求
+    MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
+    request.source = fromItem;
+    request.destination = toItem;
+    return request;
+}
+
+//线路的绘制
+- (void)calculateDirectionsWithRequest:(MKDirectionsRequest *)request {
+    request.transportType = self.transportType;
+    MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
+    [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+         if (!error) {
+             MKRoute *route = response.routes[0];
+             [self.mapView addOverlay:route.polyline];
+             CLLocationDistance distance = route.distance;
+             NSTimeInterval expectedTravelTime = route.expectedTravelTime;
+             NSLog(@"distance: %f expectedTravelTime:%f", distance, expectedTravelTime);
+         }
+         else {
+             NSLog(@"error:%@", error);
+         }
+     }];
+    
+//    [directions calculateETAWithCompletionHandler:^(MKETAResponse * response, NSError * error) {
+//        if (!error) {
+//            NSTimeInterval expectedTravelTime = response.expectedTravelTime;
+//            NSLog(@"expectedTravelTime:%f", expectedTravelTime);
+//        } else {
+//            NSLog(@"error:%@", error);
+//        }
+//    }];
+}
+
 #pragma mark - MKMapViewDelegate
 //位置的实时更新
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     self.fromCoordinate = CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
-//    self.mapView.centerCoordinate = userLocation.location.coordinate;
-    [self lineDrawing];
-    //    CLLocationCoordinate2D center = userLocation.location.coordinate;
-    //    MKCoordinateSpan span = MKCoordinateSpanMake(0.021321, 0.019366);//这个显示大小精度自己调整
-    //    MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
-    //    [mapView setRegion:region animated:YES];
+    self.mapView.centerCoordinate = userLocation.location.coordinate;
+    CLLocationCoordinate2D center = userLocation.location.coordinate;
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.021321, 0.019366);//这个显示大小精度自己调整
+    MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
+    [mapView setRegion:region animated:YES];
 }
 
 //在地图视图添加标注时回调
@@ -97,30 +154,6 @@
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray<CLLocation *> *)locations {
     NSLog(@"已经定位");
-}
-
-#pragma mark - Actions
-//线路的绘制
-- (void)lineDrawing {
-    MKPlacemark *fromPlacemark = [[MKPlacemark alloc] initWithCoordinate:self.fromCoordinate addressDictionary:nil];
-    MKPlacemark *toPlacemark = [[MKPlacemark alloc] initWithCoordinate:self.toCoordinate addressDictionary:nil];
-    MKMapItem *fromItem = [[MKMapItem alloc] initWithPlacemark:fromPlacemark];
-    MKMapItem *toItem = [[MKMapItem alloc] initWithPlacemark:toPlacemark];
-    MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
-    request.source = fromItem;
-    request.destination = toItem;
-    request.requestsAlternateRoutes = YES;
-    MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
-    [directions calculateDirectionsWithCompletionHandler:
-     ^(MKDirectionsResponse *response, NSError *error) {
-         if (error) {
-             NSLog(@"error:%@", error);
-         }
-         else {
-             MKRoute *route = response.routes[0];
-             [self.mapView addOverlay:route.polyline];
-         }
-     }];
 }
 
 #pragma mark - Lazy load
