@@ -20,6 +20,8 @@
     self.manager = [[Manager alloc] init];
     
 }
+- (IBAction)btnOnClick:(id)sender {
+}
 
 - (void)dealloc {
     NSLog(@"%s", __FUNCTION__);

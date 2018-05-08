@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="qDm-mQ-Hxo">
             <objects>
-                <viewController id="Ql2-Ab-r0e" sceneMemberID="viewController">
+                <viewController id="Ql2-Ab-r0e" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kqd-wA-2jB"/>
                         <viewControllerLayoutGuide type="bottom" id="4vR-LM-mec"/>
@@ -22,9 +22,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ptf-Gf-B1V">
-                                <rect key="frame" x="27" y="213" width="320" height="241"/>
+                                <rect key="frame" x="138.5" y="213" width="97" height="241"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="WRX-rD-fNM"/>
                                     <constraint firstAttribute="height" constant="241" id="rLS-3C-LLG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
@@ -32,7 +31,7 @@
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="Z5b-m0-oqm"/>
+                                    <action selector="btnOnClick:" destination="Ql2-Ab-r0e" eventType="touchUpInside" id="Cm8-69-Tty"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -47,43 +46,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J85-1q-ujA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="45.600000000000001" y="32.833583208395808"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0zN-2K-KDx"/>
-                        <viewControllerLayoutGuide type="bottom" id="zcv-x3-1qu"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ek-9q-Ous">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="HSC-Wr-1fv"/>
-                                </connections>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="2ek-9q-Ous" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9VZ-fB-6u5"/>
-                            <constraint firstItem="2ek-9q-Ous" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="BgZ-LF-MgC"/>
-                            <constraint firstItem="2ek-9q-Ous" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="Q1B-qb-F6b"/>
-                            <constraint firstItem="2ek-9q-Ous" firstAttribute="bottom" secondItem="zcv-x3-1qu" secondAttribute="top" id="kC9-Wq-Wfc"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="E0P-DY-iaO"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <connections>
-                        <outlet property="mapView" destination="2ek-9q-Ous" id="dg2-qU-cwp"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="910" y="33"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cTi-47-yfb">

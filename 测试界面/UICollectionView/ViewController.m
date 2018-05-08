@@ -19,6 +19,8 @@
     [super viewDidLoad];
     [self.view addSubview:self.collectionViewController.collectionView];
 }
+- (IBAction)btnOnClick:(id)sender {
+}
 
 
 - (CollectionViewController *)collectionViewController {

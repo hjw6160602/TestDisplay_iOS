@@ -54,6 +54,9 @@
 		6784088B1EE8F048006AD1DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 678408891EE8F048006AD1DB /* Main.storyboard */; };
 		6784088D1EE8F048006AD1DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6784088C1EE8F048006AD1DB /* Assets.xcassets */; };
 		678408901EE8F048006AD1DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6784088E1EE8F048006AD1DB /* LaunchScreen.storyboard */; };
+		679A648520A02FA800435DC6 /* DiscoverAroundListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A648420A02FA800435DC6 /* DiscoverAroundListView.m */; };
+		679A648820A0359500435DC6 /* DiscoverAroundTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A648720A0359500435DC6 /* DiscoverAroundTableViewModel.m */; };
+		679A648B20A17A4700435DC6 /* HotelAroundMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A648A20A17A4700435DC6 /* HotelAroundMapViewController.m */; };
 		67DD219D1EB21F100009D2FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD219C1EB21F100009D2FB /* main.m */; };
 		67DD21A01EB21F100009D2FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD219F1EB21F100009D2FB /* AppDelegate.m */; };
 		67DD21A31EB21F100009D2FB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD21A21EB21F100009D2FB /* ViewController.m */; };
@@ -166,6 +169,12 @@
 		6784088C1EE8F048006AD1DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6784088F1EE8F048006AD1DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		678408911EE8F048006AD1DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		679A648320A02FA800435DC6 /* DiscoverAroundListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoverAroundListView.h; sourceTree = "<group>"; };
+		679A648420A02FA800435DC6 /* DiscoverAroundListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoverAroundListView.m; sourceTree = "<group>"; };
+		679A648620A0359500435DC6 /* DiscoverAroundTableViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoverAroundTableViewModel.h; sourceTree = "<group>"; };
+		679A648720A0359500435DC6 /* DiscoverAroundTableViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoverAroundTableViewModel.m; sourceTree = "<group>"; };
+		679A648920A17A4700435DC6 /* HotelAroundMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotelAroundMapViewController.h; sourceTree = "<group>"; };
+		679A648A20A17A4700435DC6 /* HotelAroundMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotelAroundMapViewController.m; sourceTree = "<group>"; };
 		67DD21981EB21F100009D2FB /* 测试界面.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "测试界面.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67DD219C1EB21F100009D2FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		67DD219E1EB21F100009D2FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -296,6 +305,12 @@
 				67282AF720871F180095B77A /* AppDelegate.m */,
 				67282AF920871F180095B77A /* ViewController.h */,
 				67282AFA20871F180095B77A /* ViewController.m */,
+				679A648920A17A4700435DC6 /* HotelAroundMapViewController.h */,
+				679A648A20A17A4700435DC6 /* HotelAroundMapViewController.m */,
+				679A648320A02FA800435DC6 /* DiscoverAroundListView.h */,
+				679A648420A02FA800435DC6 /* DiscoverAroundListView.m */,
+				679A648620A0359500435DC6 /* DiscoverAroundTableViewModel.h */,
+				679A648720A0359500435DC6 /* DiscoverAroundTableViewModel.m */,
 				67282B0A2087236F0095B77A /* MyAnnotation.h */,
 				67282B0B2087236F0095B77A /* MyAnnotation.m */,
 				67282AFC20871F180095B77A /* Main.storyboard */,
@@ -691,7 +706,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "贺嘉炜";
 				TargetAttributes = {
 					6709401D1EFCEF4500A1722F = {
@@ -910,7 +925,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				67282AFB20871F180095B77A /* ViewController.m in Sources */,
+				679A648B20A17A4700435DC6 /* HotelAroundMapViewController.m in Sources */,
+				679A648520A02FA800435DC6 /* DiscoverAroundListView.m in Sources */,
 				67282B0620871F180095B77A /* main.m in Sources */,
+				679A648820A0359500435DC6 /* DiscoverAroundTableViewModel.m in Sources */,
 				67282B0C2087236F0095B77A /* MyAnnotation.m in Sources */,
 				67282AF820871F180095B77A /* AppDelegate.m in Sources */,
 			);
@@ -1290,6 +1308,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1297,6 +1316,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1344,6 +1364,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1351,6 +1372,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
