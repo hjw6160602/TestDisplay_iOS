@@ -17,7 +17,7 @@
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [[UITableViewCell alloc]init];
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
     return cell;
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "HotelAroundMapViewController.h"
+#import "DiscoverAroundListView.h"
 #import "MyAnnotation.h"
 
 @import MapKit;
@@ -15,6 +16,8 @@
 @interface HotelAroundMapViewController()<MKMapViewDelegate, CLLocationManagerDelegate>
 /** 主地图 */
 @property (strong, nonatomic) MKMapView *mapView;
+
+@property (strong, nonatomic) DiscoverAroundListView *listView;
 /** 位置管理者 */
 @property (strong, nonatomic) CLLocationManager *locationManager;
 /** 起始点坐标（当前位置）*/
@@ -61,6 +64,7 @@
 
 - (void)initUI {
     [self.view addSubview:self.mapView];
+    [self.view addSubview:self.listView];
     
     self.transportType = MKDirectionsTransportTypeAutomobile;
     MKDirectionsRequest *request = [self setupDirectionsRequest];
@@ -167,6 +171,7 @@
 - (MKMapView *)mapView {
     if (!_mapView) {
         self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
+        _mapView.delegate = self;
         [_mapView setUserTrackingMode:(MKUserTrackingModeFollow) animated:YES];
         _mapView.centerCoordinate = self.fromCoordinate;
         CLLocationCoordinate2D center = self.fromCoordinate;
@@ -177,6 +182,12 @@
     return _mapView;
 }
 
+- (DiscoverAroundListView *)listView {
+    if (!_listView) {
+        self.listView = [[DiscoverAroundListView alloc] initWithFrame:CGRectMake(0, 87, 375, 550)];
+    }
+    return _listView;
+}
 - (CLLocationManager *)locationManager {
     if (_locationManager == nil) {
         // 实例化位置管理者

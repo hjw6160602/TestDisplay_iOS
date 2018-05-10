@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 /** */
 @property (nonatomic, strong) DiscoverAroundTableViewModel *tableViewModel;
+
 @end
 
 @implementation DiscoverAroundListView
@@ -36,6 +37,7 @@
     if (!_headerView) {
         self.headerView = [[UIView alloc] init];
         self.headerView.frame = CGRectMake(0, 0, 375, 50);
+        
     }
     return _headerView;
 }
@@ -46,7 +48,8 @@
         self.tableViewModel = [[DiscoverAroundTableViewModel alloc] init];
         _tableView.dataSource = self.tableViewModel;
         _tableView.dataSource = self.tableViewModel;
-        _tableView.frame = CGRectMake(0, 50, 475, 600);
+        _tableView.frame = CGRectMake(0, 50, 475, 500);
+        
     }
     return _tableView;
 }
