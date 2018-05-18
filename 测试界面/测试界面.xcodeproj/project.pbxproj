@@ -63,6 +63,8 @@
 		679A648520A02FA800435DC6 /* DiscoverAroundListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A648420A02FA800435DC6 /* DiscoverAroundListView.m */; };
 		679A648820A0359500435DC6 /* DiscoverAroundTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A648720A0359500435DC6 /* DiscoverAroundTableViewModel.m */; };
 		679A648B20A17A4700435DC6 /* HotelAroundMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 679A648A20A17A4700435DC6 /* HotelAroundMapViewController.m */; };
+		679C74E820AD553C006CEA93 /* DisCoverAroundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 679C74E620AD553C006CEA93 /* DisCoverAroundTableViewCell.m */; };
+		679C74E920AD553C006CEA93 /* DisCoverAroundTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679C74E720AD553C006CEA93 /* DisCoverAroundTableViewCell.xib */; };
 		67DD21BA1EB21F4D0009D2FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD21B91EB21F4D0009D2FB /* main.m */; };
 		67DD21BD1EB21F4D0009D2FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD21BC1EB21F4D0009D2FB /* AppDelegate.m */; };
 		67DD21C01EB21F4D0009D2FB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DD21BF1EB21F4D0009D2FB /* ViewController.m */; };
@@ -183,6 +185,9 @@
 		679A648720A0359500435DC6 /* DiscoverAroundTableViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoverAroundTableViewModel.m; sourceTree = "<group>"; };
 		679A648920A17A4700435DC6 /* HotelAroundMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotelAroundMapViewController.h; sourceTree = "<group>"; };
 		679A648A20A17A4700435DC6 /* HotelAroundMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotelAroundMapViewController.m; sourceTree = "<group>"; };
+		679C74E520AD553C006CEA93 /* DisCoverAroundTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisCoverAroundTableViewCell.h; sourceTree = "<group>"; };
+		679C74E620AD553C006CEA93 /* DisCoverAroundTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisCoverAroundTableViewCell.m; sourceTree = "<group>"; };
+		679C74E720AD553C006CEA93 /* DisCoverAroundTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisCoverAroundTableViewCell.xib; sourceTree = "<group>"; };
 		67DD21B61EB21F4D0009D2FB /* 出境循环引用文件对比.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "出境循环引用文件对比.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67DD21B91EB21F4D0009D2FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		67DD21BB1EB21F4D0009D2FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -307,6 +312,9 @@
 				679A648420A02FA800435DC6 /* DiscoverAroundListView.m */,
 				679A648620A0359500435DC6 /* DiscoverAroundTableViewModel.h */,
 				679A648720A0359500435DC6 /* DiscoverAroundTableViewModel.m */,
+				679C74E520AD553C006CEA93 /* DisCoverAroundTableViewCell.h */,
+				679C74E620AD553C006CEA93 /* DisCoverAroundTableViewCell.m */,
+				679C74E720AD553C006CEA93 /* DisCoverAroundTableViewCell.xib */,
 				67282B0A2087236F0095B77A /* MyAnnotation.h */,
 				67282B0B2087236F0095B77A /* MyAnnotation.m */,
 				67282AFC20871F180095B77A /* Main.storyboard */,
@@ -769,6 +777,7 @@
 				67282E1E2089BFF30095B77A /* shanghai.gpx in Resources */,
 				67282B0320871F180095B77A /* LaunchScreen.storyboard in Resources */,
 				67282B0020871F180095B77A /* Assets.xcassets in Resources */,
+				679C74E920AD553C006CEA93 /* DisCoverAroundTableViewCell.xib in Resources */,
 				67282AFE20871F180095B77A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -854,6 +863,7 @@
 				67282AFB20871F180095B77A /* ViewController.m in Sources */,
 				679A648B20A17A4700435DC6 /* HotelAroundMapViewController.m in Sources */,
 				679A648520A02FA800435DC6 /* DiscoverAroundListView.m in Sources */,
+				679C74E820AD553C006CEA93 /* DisCoverAroundTableViewCell.m in Sources */,
 				67282B0620871F180095B77A /* main.m in Sources */,
 				679A648820A0359500435DC6 /* DiscoverAroundTableViewModel.m in Sources */,
 				67282B0C2087236F0095B77A /* MyAnnotation.m in Sources */,
